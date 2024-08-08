@@ -14,13 +14,14 @@ export default function App(){
   return (
     <div>
       <Textarea placeholder="Type your message here." class='!w-100' />
-      {/* ↓ need these css files */}
-      <link href="https://raw.githubusercontent.com/nikogoli/testing_shadcn_ui_for_deno/0.0.2/css/uno.css" rel="stylesheet" />
-      <link href="https://raw.githubusercontent.com/nikogoli/testing_shadcn_ui_for_deno/0.0.2/css/shadcn.css" rel="stylesheet" />
+      {/* Use these css files in the "css" directory of the repo.*/}
+      <link href={asset("/uno.css")} rel="stylesheet" />
+      <link href={asset("/shadcn.css")} rel="stylesheet" />
     </div>
   )
 }
 ```
+コメントにあるように、css ディレクトリの中にある2つの css を使うことが前提になっている。
 
 <br>
 
