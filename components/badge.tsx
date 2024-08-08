@@ -2,7 +2,7 @@
 import * as React from '../modules/esm.sh/preact@10.19.6/compat.js'
 import { VariantProps, cva } from '../modules/esm.sh/class-variance-authority@0.7.0.js'
 
-import { cn } from '../lib/utils.ts'
+import { cn } from '../modules/lib/utils.ts'
 
 const badgeVariants = cva(
   'inline-flex items-center border rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',

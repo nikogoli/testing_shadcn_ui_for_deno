@@ -1,8 +1,9 @@
-import * as React from 'preact/compat'
+// @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
+import * as React from '../modules/esm.sh/preact@10.19.6/compat.js'
 
-import { cn } from '../../lib/utils.ts'
+import { cn } from '../modules/lib/utils.ts'
 
-// deno-lint-ignore no-empty-interface
+
 export interface TextareaProps extends React.HTMLAttributes<HTMLTextAreaElement> {}
 
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(({ class:className, ...props }, ref) => {
