@@ -4,6 +4,7 @@ Radix UI と Tailwind CSS を用いたコンポーネントライブラリ shadc
 
 [testing-shadcn-ui-in-fresh]() を 3rd-party module として利用できるかどうかを確認するためのテスト用レポジトリ
 
+<br>
 
 ## 使用方法
 ```
@@ -11,10 +12,17 @@ import { Textarea } from "https://deno.land/x/testing_shadcn_ui_for_deno@0.0.2/c
 
 export default function App(){
   return (
-    <Textarea placeholder="Type your message here." class='!w-100' />
+    <div>
+      <Textarea placeholder="Type your message here." class='!w-100' />
+      {/* ↓ need these css files */}
+      <link href="https://raw.githubusercontent.com/nikogoli/testing_shadcn_ui_for_deno/0.0.2/css/uno.css" rel="stylesheet" />
+      <link href="https://raw.githubusercontent.com/nikogoli/testing_shadcn_ui_for_deno/0.0.2/css/shadcn.css" rel="stylesheet" />
+    </div>
   )
 }
 ```
+
+<br>
 
 ## 利用可能なコンポーネント (v0.0.2)
 - Badge
