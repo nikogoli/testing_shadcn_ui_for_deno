@@ -19,6 +19,8 @@
     "twind/": "https://esm.sh/@twind/core@1.1.3/",
     "$std/": "https://deno.land/std@0.193.0/",
 
+    "react": "https://esm.sh/preact@10.19.6/compat",
+
     "@babel/runtime/helpers/esm/extends": "https://esm.sh/@babel/runtime@7.23.1/helpers/esm/extends",
     "@radix-ui/primitive": "https://esm.sh/*@radix-ui/primitive@1.0.1",
     "@radix-ui/number": "https://esm.sh/@radix-ui/number@1.0.1",
