@@ -1,9 +1,10 @@
-import * as React from 'preact/compat'
+// @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
+import * as React from '../modules/esm.sh/preact@10.19.6/compat.js'
 import * as AccordionPrimitive from '@radix-ui/react-accordion'
 
-import { cn } from '../../lib/utils.ts'
-import { ElementRef, ComponentPropsWithoutRef } from "../../lib/type-utils.ts"
-import * as AltAccordionPrimitive from "../../lib/components/accordion.d.ts"
+import { cn } from '../modules/lib/utils.ts'
+import { ElementRef, ComponentPropsWithoutRef } from "../modules/lib/type-utils.ts"
+import * as AltAccordionPrimitive from "../modules/lib/components/accordion.d.ts"
 
 const Accordion = AccordionPrimitive.Root
 
