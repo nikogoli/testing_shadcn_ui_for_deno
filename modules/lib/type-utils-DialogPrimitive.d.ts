@@ -1,4 +1,5 @@
-import * as React from "preact/compat"
+// @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
+import * as React from '../../modules/esm.sh/preact@10.19.6/compat.js'
 import { PrimitiveForwardRefComponent, ComponentPropsWithoutRef } from "./type-utils.ts"
 import { DismissableLayerProps as BaseDismissableLayerProps } from "./type-utils-DismissableLayer.d.ts";
 import { FocusScopeProps as BaseFocusScopeProps } from "./type-utils-FocusScope.d.ts";

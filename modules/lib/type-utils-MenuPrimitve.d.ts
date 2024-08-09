@@ -1,4 +1,5 @@
-import * as React from "preact/compat"
+// @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
+import * as React from '../../modules/esm.sh/preact@10.19.6/compat.js'
 import { FocusScope } from "./type-utils-FocusScope.d.ts";
 import { DismissableLayer } from "./type-utils-DismissableLayer.d.ts";
 import * as RovingFocusGroup from "./type-utils-RovingFocus.d.ts"

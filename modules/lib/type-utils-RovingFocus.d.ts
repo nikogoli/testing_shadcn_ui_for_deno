@@ -6,7 +6,7 @@ import { PrimitiveForwardRefComponent, ComponentPropsWithoutRef } from "./type-u
 
 
 
-type Orientation = React.HTMLAttributes['aria-orientation'];
+type Orientation = React.HTMLAttributes<HTMLElement>['aria-orientation'];
 type Direction = 'ltr' | 'rtl';
 interface RovingFocusGroupOptions {
     /**

@@ -5,7 +5,8 @@ import type {
   Ref,
   VNode,
 } from "preact";
-import type { ForwardRefExoticComponent } from "preact/compat";
+// @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
+import type { ForwardRefExoticComponent } from "../esm.sh/preact@10.19.6/compat.js";
 
 
 
