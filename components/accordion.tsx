@@ -43,11 +43,14 @@ const AccordionContent = React.forwardRef<
   <AccordionPrimitive.Content
     ref={ref}
     className={cn(
-      'overflow-hidden text-sm transition-all data-[state=closed]:accordion-up data-[state=open]:accordion-down',
+      `overflow-hidden text-sm transition-all data-[state=closed]:accordion-up data-[state=open]:accordion-down
+      data-[state=closed]:hidden`,
       className
     )}
     {...props}
   >
+    {/* ↑ add `data-[state=closed]:hidden` because AccordionPrimitive.Trigger's function
+        to add `hidden={true}` to its Content-element does not work properly. */}
     <div className="pb-4 pt-0">{children}</div>
   </AccordionPrimitive.Content>
 ))
