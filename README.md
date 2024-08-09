@@ -25,7 +25,8 @@ export default function App(){
 
 <br>
 
-## 利用可能なコンポーネント (v0.0.3)
+## 利用可能なコンポーネント (v0.0.4)
+- Accordion
 - Alert
 - Badge
 - Button
@@ -33,3 +34,8 @@ export default function App(){
 - Skeleton
 - Table
 - TextArea
+
+<br>
+
+## オリジナルとの変更点
+react と preact の違いによって、オリジナルのままではうまく機能しない場合があり、その対応のために変更を加えた部分がある。詳細は CHANGES.md を参照。
