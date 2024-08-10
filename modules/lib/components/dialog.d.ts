@@ -1,4 +1,5 @@
-import * as React from "preact/compat"
+// @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
+import * as React from '../../esm.sh/preact@10.19.6/compat.js'
 import { PrimitiveForwardRefComponent, ComponentPropsWithoutRef } from "../type-utils.ts"
 import * as AltDialogPrimitive from "../type-utils-DialogPrimitive.d.ts"
 import { DismissableLayer } from "../type-utils-DismissableLayer.d.ts";
@@ -35,7 +36,7 @@ interface DialogContentImplProps extends Omit<DismissableLayerProps, 'onDismiss'
      */
     onCloseAutoFocus?: FocusScopeProps['onUnmountAutoFocus'];
 }
-// deno-lint-ignore no-empty-interface
+
 interface DialogContentTypeProps extends Omit<DialogContentImplProps, 'trapFocus' | 'disableOutsidePointerEvents'> {
 }
 interface DialogContentProps extends DialogContentTypeProps {
@@ -53,7 +54,7 @@ export const Content: React.ForwardRefExoticComponent<
 
 
 type PrimitiveParagraphProps = ComponentPropsWithoutRef<PrimitiveForwardRefComponent<"p">>;
-// deno-lint-ignore no-empty-interface
+
 interface DialogDescriptionProps extends PrimitiveParagraphProps {
 }
 export const Description: React.ForwardRefExoticComponent<
@@ -78,7 +79,6 @@ export interface DialogPortalProps {
 }
 
 
-// deno-lint-ignore no-empty-interface
 interface DialogOverlayImplProps extends PrimitiveDivProps {
 }
 interface DialogOverlayProps extends DialogOverlayImplProps {
@@ -96,7 +96,6 @@ export const Overlay: React.ForwardRefExoticComponent<
 
 
 type PrimitiveHeading2Props = ComponentPropsWithoutRef<PrimitiveForwardRefComponent<"h2">>;
-// deno-lint-ignore no-empty-interface
 interface DialogTitleProps extends PrimitiveHeading2Props {
 }
 export const Title: React.ForwardRefExoticComponent<

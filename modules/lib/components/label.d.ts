@@ -1,4 +1,5 @@
-import * as React from "preact/compat"
+// @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
+import * as React from '../../esm.sh/preact@10.19.6/compat.js'
 import { PrimitiveForwardRefComponent, ComponentPropsWithoutRef } from "../type-utils.ts"
 
 /**
@@ -6,7 +7,6 @@ import { PrimitiveForwardRefComponent, ComponentPropsWithoutRef } from "../type-
  */ 
 
 type PrimitiveLabelProps = ComponentPropsWithoutRef<PrimitiveForwardRefComponent<"label">>;
-// deno-lint-ignore no-empty-interface
 export interface LabelProps extends PrimitiveLabelProps {
 }
 export const Root: React.ForwardRefExoticComponent<

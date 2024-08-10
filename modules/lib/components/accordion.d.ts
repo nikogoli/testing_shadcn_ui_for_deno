@@ -26,7 +26,6 @@ export const Item: React.ForwardRefExoticComponent<
 
 
 type CollapsibleTriggerProps = ComponentPropsWithoutRef<typeof AltCollapsiblePrimitive.Trigger>;
-// deno-lint-ignore no-empty-interface
 interface AccordionTriggerProps extends CollapsibleTriggerProps {
 }
 export const Trigger: React.ForwardRefExoticComponent<
@@ -35,7 +34,6 @@ export const Trigger: React.ForwardRefExoticComponent<
 
 
 type CollapsibleContentProps = ComponentPropsWithoutRef<typeof AltCollapsiblePrimitive.Content>;
-// deno-lint-ignore no-empty-interface
 interface AccordionContentProps extends CollapsibleContentProps {
 }
 export const Content: React.ForwardRefExoticComponent<
