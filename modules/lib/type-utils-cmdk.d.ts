@@ -1,7 +1,7 @@
 import { VNode, JSX } from "preact";
 import { PrimitiveForwardRefComponent, ComponentPropsWithoutRef } from "./type-utils.ts"
 
-import { DialogProps } from '@radix-ui/react-dialog'
+import { DialogProps } from '../../modules/esm.sh/v132/_@radix-ui/react-dialog@1.0.5.js'
 
 /**
  * Following type-definitions are based on "https://esm.sh/v133/cmdk@0.2.0/X-YS9AdHlwZXMvcmVhY3Q6cHJlYWN0L2NvbXBhdCxyZWFjdDpwcmVhY3QvY29tcGF0CmUvKg/dist/index.d.ts"

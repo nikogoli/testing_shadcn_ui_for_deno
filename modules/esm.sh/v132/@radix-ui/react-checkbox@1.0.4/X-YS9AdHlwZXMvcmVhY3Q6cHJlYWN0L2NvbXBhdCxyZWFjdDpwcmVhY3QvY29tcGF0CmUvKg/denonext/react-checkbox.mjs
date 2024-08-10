@@ -1,5 +1,5 @@
 /* esm.sh - esbuild bundle(@radix-ui/react-checkbox@1.0.4) denonext production */
-import k from"@babel/runtime/helpers/esm/extends";
+import k from"../../../../../../esm.sh/@babel/runtime@7.23.1/helpers/esm/extends.js";
 import{forwardRef as P,useState as O,useRef as C,useEffect as y,createElement as p}from"../../../../../../esm.sh/preact@10.19.6/compat.js";
 import{useComposedRefs as D}from"../../../../../../esm.sh/v132/_@radix-ui/react-compose-refs@1.0.1.js";
 import{createContextScope as M}from"../../../../../../esm.sh/v132/_@radix-ui/react-context@1.0.1.js";
