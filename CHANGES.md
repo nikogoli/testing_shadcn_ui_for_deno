@@ -10,3 +10,10 @@
 しかし、何かしらの理由で、開閉状態は前者には正しく反映されるものの後者にはズレて反映されることがある。そのため、あるアイテムをクリックしたとき、以前に閉じられた別のアイテムにおいて data-state が close なのに hidden が消えて、開いた状態になってしまう。
 
 そこで、class 設定において、 data-state に合わせて display のスタイルを変更させることで対応した。
+
+
+### Collapsible
+- 問題：data-state が close でも item が閉じない
+- 対応：<CollapsibleContent /> の class 設定に `data-[state=closed]:hidden` を追記
+
+上記の Accordion における問題と同じもの。
