@@ -1,4 +1,5 @@
-import * as React from "preact/compat"
+// @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
+import * as React from '../../../modules/esm.sh/preact@10.19.6/compat.js'
 import * as AltMenuPrimitive from "../type-utils-MenuPrimitve.d.ts"
 import { RovingFocusGroupProps } from "../type-utils-RovingFocus.d.ts"
 import { PrimitiveForwardRefComponent, ComponentPropsWithoutRef } from "../type-utils.ts"
@@ -27,7 +28,6 @@ export const Root: React.ForwardRefExoticComponent<
 
 
 type MenuContentProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.Content>;
-// deno-lint-ignore no-empty-interface
 interface MenubarContentProps extends Omit<MenuContentProps, 'onEntryFocus'> {
 }
 export const Content: React.ForwardRefExoticComponent<
@@ -37,7 +37,6 @@ export const Content: React.ForwardRefExoticComponent<
 
 
 type MenuSubContentProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.SubContent>;
-// deno-lint-ignore no-empty-interface
 interface MenubarSubContentProps extends MenuSubContentProps {
 }
 export const SubContent: React.ForwardRefExoticComponent<
@@ -48,7 +47,6 @@ export const SubContent: React.ForwardRefExoticComponent<
 
 
 type MenuCheckboxItemProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.CheckboxItem>;
-// deno-lint-ignore no-empty-interface
 interface MenubarCheckboxItemProps extends MenuCheckboxItemProps {
 }
 export const CheckboxItem: React.ForwardRefExoticComponent<
@@ -58,7 +56,6 @@ export const CheckboxItem: React.ForwardRefExoticComponent<
 
 
 type MenuItemProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.Item>;
-// deno-lint-ignore no-empty-interface
 interface MenubarItemProps extends MenuItemProps {
 }
 export const Item: React.ForwardRefExoticComponent<
@@ -69,7 +66,6 @@ export const Item: React.ForwardRefExoticComponent<
 
 
 type MenuLabelProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.Label>;
-// deno-lint-ignore no-empty-interface
 export interface MenubarLabelProps extends MenuLabelProps {
 }
 export const Label: React.ForwardRefExoticComponent<
@@ -79,7 +75,6 @@ export const Label: React.ForwardRefExoticComponent<
 
 
 type MenuRadioItemProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.RadioItem>;
-// deno-lint-ignore no-empty-interface
 interface MenubarRadioItemProps extends MenuRadioItemProps {
 }
 export const RadioItem: React.ForwardRefExoticComponent<
@@ -91,7 +86,6 @@ export const RadioItem: React.ForwardRefExoticComponent<
 
 
 type MenuSeparatorProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.Separator>;
-// deno-lint-ignore no-empty-interface
 export interface MenubarSeparatorProps extends MenuSeparatorProps {
 }
 export const Separator: React.ForwardRefExoticComponent<
@@ -101,7 +95,6 @@ export const Separator: React.ForwardRefExoticComponent<
 
 
 
-// deno-lint-ignore no-empty-interface
 interface MenubarTriggerProps extends PrimitiveButtonProps {
 }
 export const Trigger: React.ForwardRefExoticComponent<
@@ -111,7 +104,6 @@ export const Trigger: React.ForwardRefExoticComponent<
 
 
 type MenuSubTriggerProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.SubTrigger>;
-// deno-lint-ignore no-empty-interface
 interface MenubarSubTriggerProps extends MenuSubTriggerProps {
 }
 export const SubTrigger: React.ForwardRefExoticComponent<
