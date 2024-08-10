@@ -1,7 +1,8 @@
-import * as React from "react";
-import * as Radix from "@radix-ui/react-primitive";
-import { Primitive } from "@radix-ui/react-primitive";
-export const createCollapsibleScope: import("@radix-ui/react-context").CreateScope;
+// @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
+import * as React from '../../../../../../esm.sh/preact@10.19.6/compat.js'
+import * as Radix from "../../../../../../esm.sh/v132/_@radix-ui/react-primitive@1.0.3.js";
+import { Primitive } from "../../../../../../esm.sh/v132/_@radix-ui/react-primitive@1.0.3.js";
+export const createCollapsibleScope: import("../../../../../../esm.sh/v132/_@radix-ui/react-context@1.0.1.js").CreateScope;
 type PrimitiveDivProps = Radix.ComponentPropsWithoutRef<typeof Primitive.div>;
 export interface CollapsibleProps extends PrimitiveDivProps {
     defaultOpen?: boolean;

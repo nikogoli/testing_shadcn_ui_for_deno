@@ -1,8 +1,9 @@
-import * as React from "react";
+// @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
+import * as React from '../../../../../../esm.sh/preact@10.19.6/compat.js';
 export function createContext<ContextValueType extends object | null>(rootComponentName: string, defaultContext?: ContextValueType): readonly [{
     (props: ContextValueType & {
         children: React.ReactNode;
-    }): JSX.Element;
+    }): React.JSX.Element;
     displayName: string;
 }, (consumerName: string) => ContextValueType];
 export type Scope<C = any> = {
@@ -19,7 +20,7 @@ export function createContextScope(scopeName: string, createContextScopeDeps?: C
     (props: ContextValueType & {
         scope: Scope<ContextValueType>;
         children: React.ReactNode;
-    }): JSX.Element;
+    }): React.JSX.Element;
     displayName: string;
 }, (consumerName: string, scope: Scope<ContextValueType | undefined>) => ContextValueType], CreateScope];
 

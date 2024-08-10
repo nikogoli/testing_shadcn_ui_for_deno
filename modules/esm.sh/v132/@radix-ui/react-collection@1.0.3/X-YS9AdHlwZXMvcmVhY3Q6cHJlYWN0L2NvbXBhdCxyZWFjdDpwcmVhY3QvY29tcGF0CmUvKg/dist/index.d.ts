@@ -1,6 +1,7 @@
-import React from "react";
-import { Slot } from "@radix-ui/react-slot";
-import * as Radix from "@radix-ui/react-primitive";
+// @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
+import * as React from '../../../../../../esm.sh/preact@10.19.6/compat.js'
+import { Slot } from "../../../../../../esm.sh/v132/_@radix-ui/react-slot@1.0.2.js";
+import * as Radix from "../../../../../../esm.sh/v132/_@radix-ui/react-primitive@1.0.3.js";
 type SlotProps = Radix.ComponentPropsWithoutRef<typeof Slot>;
 export interface CollectionProps extends SlotProps {
     scope: any;

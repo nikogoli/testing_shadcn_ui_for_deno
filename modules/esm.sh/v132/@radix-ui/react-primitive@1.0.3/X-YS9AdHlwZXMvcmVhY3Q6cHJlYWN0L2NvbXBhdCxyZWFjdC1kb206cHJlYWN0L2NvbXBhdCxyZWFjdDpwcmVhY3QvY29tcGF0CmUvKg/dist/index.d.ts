@@ -1,14 +1,15 @@
-import * as React from "react";
+// @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
+import * as React from '../../../../../../esm.sh/preact@10.19.6/compat.js';
 declare const NODES: readonly ["a", "button", "div", "form", "h2", "h3", "img", "input", "label", "li", "nav", "ol", "p", "span", "svg", "ul"];
 type PropsWithoutRef<P> = P extends any ? ('ref' extends keyof P ? Pick<P, Exclude<keyof P, 'ref'>> : P) : P;
-export type ComponentPropsWithoutRef<T extends React.ElementType> = PropsWithoutRef<React.ComponentProps<T>>;
+export type ComponentPropsWithoutRef<T extends React.JSX.ElementType> = PropsWithoutRef<React.ComponentProps<T>>;
 type Primitives = {
     [E in typeof NODES[number]]: PrimitiveForwardRefComponent<E>;
 };
-export type PrimitivePropsWithRef<E extends React.ElementType> = React.ComponentPropsWithRef<E> & {
+export type PrimitivePropsWithRef<E extends React.JSX.ElementType> = React.ComponentPropsWithRef<E> & {
     asChild?: boolean;
 };
-interface PrimitiveForwardRefComponent<E extends React.ElementType> extends React.ForwardRefExoticComponent<PrimitivePropsWithRef<E>> {
+interface PrimitiveForwardRefComponent<E extends React.JSX.ElementType> extends React.ForwardRefExoticComponent<PrimitivePropsWithRef<E>> {
 }
 export const Primitive: Primitives;
 /**
