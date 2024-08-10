@@ -21,6 +21,8 @@
 
     "react": "./modules/esm.sh/preact@10.19.6/compat.js",
 
+    "@radix-ui/rect": "https://esm.sh/@radix-ui/rect@1.1.0?alias=react:preact/compat,@types/react:preact/compat",
+
     "@babel/runtime/helpers/esm/extends": "./modules/esm.sh/@babel/runtime@7.23.1/helpers/esm/extends.js",
     "@radix-ui/primitive": "./modules/esm.sh/_@radix-ui/primitive@1.0.1.js",
     "@radix-ui/number": "https://esm.sh/@radix-ui/number@1.0.1",
