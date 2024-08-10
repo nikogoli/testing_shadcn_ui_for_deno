@@ -1,6 +1,6 @@
 // @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
 import * as React from '../modules/esm.sh/preact@10.19.6/compat.js'
-import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
+import * as CheckboxPrimitive from '../modules/esm.sh/v132/_@radix-ui/react-checkbox@1.0.4.js'
 import * as AltCheckboxPrimitive from "../modules/lib/components/checkbox.d.ts"
 
 import { cn } from '../modules/lib/utils.ts'
