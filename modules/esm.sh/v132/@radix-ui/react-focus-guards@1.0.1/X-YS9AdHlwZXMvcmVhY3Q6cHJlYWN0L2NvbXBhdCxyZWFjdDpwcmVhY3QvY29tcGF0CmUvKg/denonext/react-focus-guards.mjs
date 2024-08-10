@@ -1,0 +1,4 @@
+/* esm.sh - esbuild bundle(@radix-ui/react-focus-guards@1.0.1) denonext production */
+import{useEffect as n}from"../../../../../../esm.sh/preact@10.19.6/compat.js";
+var d=0;function u(e){return c(),e.children}function c(){n(()=>{var e,t;let a=document.querySelectorAll("[data-radix-focus-guard]");return document.body.insertAdjacentElement("afterbegin",(e=a[0])!==null&&e!==void 0?e:r()),document.body.insertAdjacentElement("beforeend",(t=a[1])!==null&&t!==void 0?t:r()),d++,()=>{d===1&&document.querySelectorAll("[data-radix-focus-guard]").forEach(o=>o.remove()),d--}},[])}function r(){let e=document.createElement("span");return e.setAttribute("data-radix-focus-guard",""),e.tabIndex=0,e.style.cssText="outline: none; opacity: 0; position: fixed; pointer-events: none",e}var f=u;export{u as FocusGuards,f as Root,c as useFocusGuards};
+//# sourceMappingURL=react-focus-guards.mjs.map
