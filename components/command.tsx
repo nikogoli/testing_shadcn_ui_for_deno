@@ -3,7 +3,7 @@ import * as React from '../modules/esm.sh/preact@10.19.6/compat.js'
 import { DialogProps } from '../modules/esm.sh/v132/_@radix-ui/react-dialog@1.0.5.js'
 import IconSearch from "https://deno.land/x/tabler_icons_tsx@0.0.5/tsx/search.tsx"
 
-import { Command as CommandPrimitive } from 'cmdk'
+import { Command as CommandPrimitive } from '../modules/esm.sh/_cmdk@0.2.0.js'
 import { Command as AltCommandPrimitive } from "../modules/lib/type-utils-cmdk.d.ts"
 
 import { cn } from '../modules/lib/utils.ts'
