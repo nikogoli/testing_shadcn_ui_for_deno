@@ -52,7 +52,6 @@
     "@radix-ui/react-visually-hidden": "https://esm.sh/v132/*@radix-ui/react-visually-hidden@1.0.3?alias=react:preact/compat,@types/react:preact/compat",
 
     "@radix-ui/react-alert-dialog": "https://esm.sh/v132/*@radix-ui/react-alert-dialog@1.0.5?alias=react:preact/compat,@types/react:preact/compat",
-    "@radix-ui/react-avatar": "https://esm.sh/v132/*@radix-ui/react-avatar@1.0.4?alias=react:preact/compat,@types/react:preact/compat",
     "@radix-ui/react-checkbox": "https://esm.sh/v132/*@radix-ui/react-checkbox@1.0.4?alias=react:preact/compat,@types/react:preact/compat",
     "@radix-ui/react-context-menu": "https://esm.sh/v132/*@radix-ui/react-context-menu@2.1.5?alias=react:preact/compat,@types/react:preact/compat",
     "@radix-ui/react-dropdown-menu": "https://esm.sh/v132/*@radix-ui/react-dropdown-menu@2.0.6?alias=react:preact/compat,@types/react:preact/compat",
@@ -68,7 +67,7 @@
     "@radix-ui/react-tabs": "https://esm.sh/*@radix-ui/react-tabs@1.0.4?alias=react:preact/compat,@types/react:preact/compat",
     "@radix-ui/react-toast": "https://esm.sh/*@radix-ui/react-toast@1.1.5?alias=react:preact/compat,react-dom:preact/compat,@types/react:preact/compat",
     "@radix-ui/react-tooltip": "https://esm.sh/*@radix-ui/react-tooltip@1.0.7?alias=react:preact/compat,@types/react:preact/compat",
-    
+
     "aria-hidden": "https://esm.sh/aria-hidden@1.2.3",
     "cmdk": "https://esm.sh/*cmdk@0.2.0?alias=react:preact/compat,@types/react:preact/compat",
     "command-score": "https://esm.sh/command-score@0.1.2",

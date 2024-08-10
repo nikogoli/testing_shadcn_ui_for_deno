@@ -1,0 +1,9 @@
+/* esm.sh - esbuild bundle(@radix-ui/react-avatar@1.0.4) denonext production */
+import i from"../../../../../../esm.sh/@babel/runtime@7.23.1/helpers/esm/extends.js";
+import{forwardRef as f,useState as b,createElement as $,useEffect as p}from"../../../../../../esm.sh/preact@10.19.6/compat.js";
+import{createContextScope as A}from"../../../../../../esm.sh/v132/_@radix-ui/react-context@1.0.1.js";
+import{useCallbackRef as N}from"../../../../../../esm.sh/v132/_@radix-ui/react-use-callback-ref@1.0.1.js";
+import{useLayoutEffect as l}from"../../../../../../esm.sh/v132/_@radix-ui/react-use-layout-effect@1.0.1.js";
+import{Primitive as u}from"../../../../../../esm.sh/v132/_@radix-ui/react-primitive@1.0.3.js";
+var g="Avatar",[S,F]=A(g),[y,v]=S(g),L=f((a,s)=>{let{__scopeAvatar:t,...e}=a,[o,r]=b("idle");return $(y,{scope:t,imageLoadingStatus:o,onImageLoadingStatusChange:r},$(u.span,i({},e,{ref:s})))}),x="AvatarImage",_=f((a,s)=>{let{__scopeAvatar:t,src:e,onLoadingStatusChange:o=()=>{},...r}=a,n=v(x,t),c=I(e),d=N(m=>{o(m),n.onImageLoadingStatusChange(m)});return l(()=>{c!=="idle"&&d(c)},[c,d]),c==="loaded"?$(u.img,i({},r,{ref:s,src:e})):null}),C="AvatarFallback",E=f((a,s)=>{let{__scopeAvatar:t,delayMs:e,...o}=a,r=v(C,t),[n,c]=b(e===void 0);return p(()=>{if(e!==void 0){let d=window.setTimeout(()=>c(!0),e);return()=>window.clearTimeout(d)}},[e]),n&&r.imageLoadingStatus!=="loaded"?$(u.span,i({},o,{ref:s})):null});function I(a){let[s,t]=b("idle");return l(()=>{if(!a){t("error");return}let e=!0,o=new window.Image,r=n=>()=>{e&&t(n)};return t("loading"),o.onload=r("loaded"),o.onerror=r("error"),o.src=a,()=>{e=!1}},[a]),s}var j=L,O=_,T=E;export{L as Avatar,E as AvatarFallback,_ as AvatarImage,T as Fallback,O as Image,j as Root,F as createAvatarScope};
+//# sourceMappingURL=react-avatar.mjs.map
