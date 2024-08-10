@@ -39,7 +39,9 @@ type PortalProps = ComponentPropsWithoutRef<
 >
 
 interface DialogPortalProps {
-  children?: VNode;
+  // I add this, and cannot understand why the original type-definition omits the 'className' prop. (Nikogoli)
+  class?: string | React.JSX.SignalLike<string | undefined> | undefined;
+  children?: VNode | VNode[];
   /**
    * Specify a container element to portal the content into.
    */
