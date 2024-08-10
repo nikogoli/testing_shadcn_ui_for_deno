@@ -1,4 +1,5 @@
-import * as React from "preact/compat"
+// @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
+import * as React from '../../esm.sh/preact@10.19.6/compat.js'
 import { ComponentPropsWithoutRef } from "../type-utils.ts"
 import * as AltDialogPrimitive from "../type-utils-DialogPrimitive.d.ts"
 
@@ -8,7 +9,6 @@ import * as AltDialogPrimitive from "../type-utils-DialogPrimitive.d.ts"
 
 
 type DialogProps = ComponentPropsWithoutRef<typeof AltDialogPrimitive.Root>
-// deno-lint-ignore no-empty-interface
 interface AlertDialogProps extends Omit<DialogProps, 'modal'> {
 }
 
@@ -18,7 +18,6 @@ export const Root: React.FC<AlertDialogProps>;
 
 
 type DialogTriggerProps = ComponentPropsWithoutRef<typeof AltDialogPrimitive.Trigger>;
-// deno-lint-ignore no-empty-interface
 interface AlertDialogTriggerProps extends DialogTriggerProps {
 }
 
@@ -29,7 +28,6 @@ export const Trigger: React.ForwardRefExoticComponent<
 
 
 type DialogPortalProps = ComponentPropsWithoutRef<typeof AltDialogPrimitive.Portal>;
-// deno-lint-ignore no-empty-interface
 interface AlertDialogPortalProps extends DialogPortalProps {
 }
 
@@ -38,7 +36,6 @@ export const Portal: React.FC<AlertDialogPortalProps>;
 
 
 type DialogOverlayProps = ComponentPropsWithoutRef<typeof AltDialogPrimitive.Overlay>;
-// deno-lint-ignore no-empty-interface
 interface AlertDialogOverlayProps extends DialogOverlayProps {
 }
 
@@ -49,7 +46,6 @@ export const Overlay: React.ForwardRefExoticComponent<
 
 
 type DialogContentProps = ComponentPropsWithoutRef<typeof AltDialogPrimitive.Content>;
-// deno-lint-ignore no-empty-interface
 interface AlertDialogContentProps extends Omit<DialogContentProps, 'onPointerDownOutside' | 'onInteractOutside'> {
 }
 
@@ -60,7 +56,6 @@ export const Content: React.ForwardRefExoticComponent<
 
 
 type DialogCloseProps = ComponentPropsWithoutRef<typeof AltDialogPrimitive.Close>;
-// deno-lint-ignore no-empty-interface
 interface AlertDialogActionProps extends DialogCloseProps {
 }
 
@@ -70,7 +65,6 @@ export const Action: React.ForwardRefExoticComponent<
 
 
 
-// deno-lint-ignore no-empty-interface
 interface AlertDialogCancelProps extends DialogCloseProps {
 }
 export const Cancel: React.ForwardRefExoticComponent<
@@ -80,7 +74,6 @@ export const Cancel: React.ForwardRefExoticComponent<
 
 
 type DialogTitleProps = ComponentPropsWithoutRef<typeof AltDialogPrimitive.Title>;
-// deno-lint-ignore no-empty-interface
 interface AlertDialogTitleProps extends DialogTitleProps {
 }
 
@@ -91,7 +84,6 @@ export const Title: React.ForwardRefExoticComponent<
 
 
 type DialogDescriptionProps = ComponentPropsWithoutRef<typeof AltDialogPrimitive.Description>;
-// deno-lint-ignore no-empty-interface
 interface AlertDialogDescriptionProps extends DialogDescriptionProps {
 }
 
