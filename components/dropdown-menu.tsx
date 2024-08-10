@@ -1,6 +1,6 @@
 // @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
 import * as React from '../modules/esm.sh/preact@10.19.6/compat.js'
-import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
+import * as DropdownMenuPrimitive from '../modules/esm.sh/v132/_@radix-ui/react-dropdown-menu@2.0.6.js'
 import * as AltDropdownMenuPrimitive from "../modules/lib/components/dropdown-menu.d.ts"
 
 import IconChevronLeft from "https://deno.land/x/tabler_icons_tsx@0.0.5/tsx/chevron-left.tsx"
