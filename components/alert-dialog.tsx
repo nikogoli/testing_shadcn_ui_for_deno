@@ -1,6 +1,6 @@
 // @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
 import * as React from '../modules/esm.sh/preact@10.19.6/compat.js'
-import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog'
+import * as AlertDialogPrimitive from '../modules/esm.sh/v132/_@radix-ui/react-alert-dialog@1.0.5.js'
 import * as AltAlertDialogPrimitive from "../modules/lib/components/alert-dialog.d.ts"
 
 import { cn } from '../modules/lib/utils.ts'
@@ -15,7 +15,7 @@ const AlertDialog = AlertDialogPrimitive.Root
 const AlertDialogTrigger = AlertDialogPrimitive.Trigger
 
 
-const AlertDialogPortal = ({ class:className, children, ...props }: AlertDialogPrimitive.AlertDialogPortalProps) => (
+const AlertDialogPortal = ({ class:className, children, ...props }: AltAlertDialogPrimitive.AlertDialogPortalProps) => (
   <AlertDialogPrimitive.Portal className={cn(className)} {...props}>
     <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center">{children}</div>
   </AlertDialogPrimitive.Portal>
