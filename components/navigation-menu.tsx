@@ -1,6 +1,6 @@
 // @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
 import * as React from '../modules/esm.sh/preact@10.19.6/compat.js'
-import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu'
+import * as NavigationMenuPrimitive from '../modules/esm.sh/v132/_@radix-ui/react-navigation-menu@1.1.4.js'
 import * as AltNavigationMenuPrimitive from "../modules/lib/components/navigation-menu.d.ts"
 import { cva } from '../modules/esm.sh/class-variance-authority@0.7.0.js'
 
