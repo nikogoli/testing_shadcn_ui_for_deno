@@ -1,8 +1,9 @@
-import * as React from "preact/compat"
+// @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
+import * as React from '../../../modules/esm.sh/preact@10.19.6/compat.js'
 import { DismissableLayerProps } from "../type-utils-MenuPrimitve.d.ts";
 import * as VisuallyHiddenPrimitive from "../type-utils-VisuallyHiddenPrimitive.d.ts"
 import { PrimitiveForwardRefComponent, ComponentPropsWithoutRef, ElementRef } from "../type-utils.ts"
-import { Scope } from "@radix-ui/react-context";
+import { Scope } from "../../esm.sh/v132/_@radix-ui/react-context@1.0.1.js";
 import { VNode } from "preact";
 
 /**
@@ -34,7 +35,7 @@ interface NavigationMenuProviderPrivateProps {
   onItemSelect(itemValue: string): void;
   onItemDismiss(): void;
 }
-// deno-lint-ignore no-empty-interface
+
 interface NavigationMenuProviderProps extends NavigationMenuProviderPrivateProps {
 }
 
@@ -87,7 +88,6 @@ export const Content: React.ForwardRefExoticComponent<
 
 
 
-// deno-lint-ignore no-empty-interface
 interface NavigationMenuIndicatorImplProps extends PrimitiveDivProps {
 }
 interface NavigationMenuIndicatorProps extends NavigationMenuIndicatorImplProps {
@@ -126,7 +126,6 @@ export const Link: React.ForwardRefExoticComponent<
 
 
 type PrimitiveUnorderedListProps = ComponentPropsWithoutRef<PrimitiveForwardRefComponent<"ul">>;
-// deno-lint-ignore no-empty-interface
 interface NavigationMenuListProps extends PrimitiveUnorderedListProps {
 }
 export const List: React.ForwardRefExoticComponent<
@@ -135,7 +134,6 @@ export const List: React.ForwardRefExoticComponent<
 
 
 
-// deno-lint-ignore no-empty-interface
 interface NavigationMenuTriggerProps extends PrimitiveButtonProps {
 }
 export const Trigger: React.ForwardRefExoticComponent<
@@ -145,7 +143,6 @@ export const Trigger: React.ForwardRefExoticComponent<
 
 
 
-// deno-lint-ignore no-empty-interface
 interface NavigationMenuViewportImplProps extends PrimitiveDivProps {
 }
 interface NavigationMenuViewportProps extends Omit<NavigationMenuViewportImplProps, 'children' | 'activeContentValue'> {
