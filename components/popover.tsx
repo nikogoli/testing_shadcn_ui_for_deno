@@ -1,6 +1,6 @@
 // @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
 import * as React from '../modules/esm.sh/preact@10.19.6/compat.js'
-import * as PopoverPrimitive from '@radix-ui/react-popover'
+import * as PopoverPrimitive from '../modules/esm.sh/_@radix-ui/react-popover@1.0.7.js'
 import * as AltPopoverPrimitive from "../modules/lib/components/popover.d.ts"
 
 import { cn } from '../modules/lib/utils.ts'
