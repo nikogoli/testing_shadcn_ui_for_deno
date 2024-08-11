@@ -1,5 +1,5 @@
 import * as React from "preact/compat"
-import * as ToastPrimitives from "@radix-ui/react-toast"
+import * as ToastPrimitives from "../modules/esm.sh/_@radix-ui/react-toast@1.1.5.js"
 import * as AltToastPrimitives from "../modules/lib/components/toast.d.ts"
 import { VariantProps, cva } from "../modules/esm.sh/class-variance-authority@0.7.0.js"
 
