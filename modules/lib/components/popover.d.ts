@@ -1,4 +1,5 @@
-import * as React from "preact/compat"
+// @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
+import * as React from '../../../modules/esm.sh/preact@10.19.6/compat.js'
 import { ComponentPropsWithoutRef } from "../type-utils.ts"
 import * as AltPopperPrimitive from "../type-utils-PopperPrimitive.d.ts"
 import { FocusScopeProps } from "../type-utils-FocusScope.d.ts"
@@ -27,7 +28,7 @@ interface PopoverContentImplProps extends Omit<PopperContentProps, 'onPlaced'>, 
    */
   onCloseAutoFocus?: FocusScopeProps['onUnmountAutoFocus'];
 }
-// deno-lint-ignore no-empty-interface
+
 interface PopoverContentTypeProps extends Omit<PopoverContentImplProps, 'trapFocus' | 'disableOutsidePointerEvents'> {
 }
 interface PopoverContentProps extends PopoverContentTypeProps {
