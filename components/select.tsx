@@ -1,6 +1,6 @@
 // @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
 import * as React from '../modules/esm.sh/preact@10.19.6/compat.js'
-import * as SelectPrimitive from '@radix-ui/react-select'
+import * as SelectPrimitive from '../modules/esm.sh/v132/_@radix-ui/react-select@2.0.0.js'
 import * as AltSelectPrimitive from "../modules/lib/components/select.d.ts"
 
 import { cn } from '../modules/lib/utils.ts'
