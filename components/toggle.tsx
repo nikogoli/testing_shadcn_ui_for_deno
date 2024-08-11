@@ -1,6 +1,6 @@
 // @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
 import * as React from '../modules/esm.sh/preact@10.19.6/compat.js'
-import * as TogglePrimitive from '@radix-ui/react-toggle'
+import * as TogglePrimitive from '../modules/esm.sh/v132/_@radix-ui/react-toggle@1.0.3.js'
 import { VariantProps, cva } from '../modules/esm.sh/class-variance-authority@0.7.0.js'
 
 import { cn } from '../modules/lib/utils.ts'
