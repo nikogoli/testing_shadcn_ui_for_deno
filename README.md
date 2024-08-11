@@ -8,7 +8,7 @@ Radix UI と Tailwind CSS を用いたコンポーネントライブラリ shadc
 
 ## 使用方法
 ```
-import { Textarea } from "https://deno.land/x/testing_shadcn_ui_for_deno@0.0.5/components/textarea.tsx"
+import { Textarea } from "https://deno.land/x/testing_shadcn_ui_for_deno@0.0.6/components/textarea.tsx"
 
 export default function App(){
   return (
@@ -25,7 +25,7 @@ export default function App(){
 
 <br>
 
-## 利用可能なコンポーネント (v0.0.5)
+## 利用可能なコンポーネント (v0.0.6)
 - 🆗：Accordion
 - 🆗：Alert
 - 🆗：AlertDialog
@@ -33,32 +33,34 @@ export default function App(){
 - 🆗：Avatar
 - 🆗：Badge
 - 🆗：Button
+- 🆗：Card
 - 🆗：Checkbox
 - 🆗：Collapsible
-- ⛔：ComboBox
+- 🆗：ComboBox
 - 🆗：Command
 - 🆗：ContextMenu
-- ⛔：DataTable
+- 🆗：DataTable
 - 🆗：Dialog
-- ⛔：DropdownMenu
-- ⛔：HoverCard
+- 🆗：DropdownMenu
+- 🆗：HoverCard
 - 🆗：Input
 - 🆗：Label
 - ⛔：MenuBar
-- ⛔：Popover
-- ⛔：RadioGroup
-- ⛔：Select
-- ⛔：Sheet
+- ⛔：NavigationMenu
+- 🆗：Popover
+- 🆗：RadioGroup
+- 🆗：Select
+- 🆗：Sheet
 - 🆗：Skeleton
 - ⛔：Slider
-- ⛔：Switch
+- 🆗：Switch
 - ⛔：Tabs
 - 🆗：Table
 - 🆗：TextArea
 - ⛔：Toast
-- ⛔：Toggle
+- 🆗：Toggle
 - ⛔：Toolip
-- ⛔：NavigationMenu
+
 <br>
 
 ## オリジナルとの変更点
