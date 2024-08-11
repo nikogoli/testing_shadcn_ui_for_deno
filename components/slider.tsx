@@ -1,6 +1,6 @@
 // @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
 import * as React from '../modules/esm.sh/preact@10.19.6/compat.js'
-import * as SliderPrimitive from '@radix-ui/react-slider'
+import * as SliderPrimitive from '../modules/esm.sh/_@radix-ui/react-slider@1.1.2.js'
 import * as AltSliderPrimitive from "../modules/lib/components/slider.d.ts"
 
 import { cn } from '../modules/lib/utils.ts'
