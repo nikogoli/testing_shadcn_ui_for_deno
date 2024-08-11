@@ -1,4 +1,5 @@
-import * as React from "preact/compat"
+// @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
+import * as React from '../../../modules/esm.sh/preact@10.19.6/compat.js'
 import { PrimitiveForwardRefComponent, ComponentPropsWithoutRef } from "../type-utils.ts"
 
 /**
@@ -43,7 +44,7 @@ interface SliderVerticalProps extends SliderOrientationProps {
 interface SliderProps extends Omit<SliderHorizontalProps | SliderVerticalProps, keyof SliderOrientationPrivateProps | 'defaultValue' | 'value'> {
   name?: string;
   disabled?: boolean;
-  orientation?: React.HTMLAttributes['aria-orientation'];
+  orientation?: React.HTMLAttributes<HTMLElement>['aria-orientation'];
   dir?: Direction;
   min?: number;
   max?: number;
