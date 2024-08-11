@@ -1,6 +1,6 @@
 // @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
 import * as React from '../modules/esm.sh/preact@10.19.6/compat.js'
-import * as TabsPrimitive from '@radix-ui/react-tabs'
+import * as TabsPrimitive from '../modules/esm.sh/_@radix-ui/react-tabs@1.0.4.js'
 import * as AltTabsPrimitive from "../modules/lib/components/tabs.d.ts"
 
 import { cn } from '../modules/lib/utils.ts'
