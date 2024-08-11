@@ -1,0 +1,12 @@
+/* esm.sh - esbuild bundle(@radix-ui/react-switch@1.0.3) denonext production */
+import h from"../../../../../../esm.sh/@babel/runtime@7.23.1/helpers/esm/extends.js";
+import{forwardRef as S,useState as g,useRef as k,createElement as d,useEffect as y}from"../../../../../../esm.sh/preact@10.19.6/compat.js";
+import{composeEventHandlers as _}from"../../../../../../esm.sh/_@radix-ui/primitive@1.0.1.js";
+import{useComposedRefs as R}from"../../../../../../esm.sh/v132/_@radix-ui/react-compose-refs@1.0.1.js";
+import{createContextScope as T}from"../../../../../../esm.sh/v132/_@radix-ui/react-context@1.0.1.js";
+import{useControllableState as H}from"../../../../../../esm.sh/v132/_@radix-ui/react-use-controllable-state@1.0.1.js";
+import{usePrevious as q}from"../../../../../../esm.sh/v132/_@radix-ui/react-use-previous@1.0.1.js";
+import{useSize as B}from"../../../../../../esm.sh/v132/_@radix-ui/react-use-size@1.0.1.js";
+import{Primitive as C}from"../../../../../../esm.sh/v132/_@radix-ui/react-primitive@1.0.3.js";
+var v="Switch",[M,V]=T(v),[N,O]=M(v),j=S((e,a)=>{let{__scopeSwitch:t,name:o,checked:c,defaultChecked:b,required:n,disabled:r,value:i="on",onCheckedChange:f,...m}=e,[s,p]=g(null),I=R(a,u=>p(u)),$=k(!1),P=s?!!s.closest("form"):!0,[l=!1,x]=H({prop:c,defaultProp:b,onChange:f});return d(N,{scope:t,checked:l,disabled:r},d(C.button,h({type:"button",role:"switch","aria-checked":l,"aria-required":n,"data-state":w(l),"data-disabled":r?"":void 0,disabled:r,value:i},m,{ref:I,onClick:_(e.onClick,u=>{x(E=>!E),P&&($.current=u.isPropagationStopped(),$.current||u.stopPropagation())})})),P&&d(D,{control:s,bubbles:!$.current,name:o,value:i,checked:l,required:n,disabled:r,style:{transform:"translateX(-100%)"}}))}),z="SwitchThumb",A=S((e,a)=>{let{__scopeSwitch:t,...o}=e,c=O(z,t);return d(C.span,h({"data-state":w(c.checked),"data-disabled":c.disabled?"":void 0},o,{ref:a}))}),D=e=>{let{control:a,checked:t,bubbles:o=!0,...c}=e,b=k(null),n=q(t),r=B(a);return y(()=>{let i=b.current,f=window.HTMLInputElement.prototype,s=Object.getOwnPropertyDescriptor(f,"checked").set;if(n!==t&&s){let p=new Event("click",{bubbles:o});s.call(i,t),i.dispatchEvent(p)}},[n,t,o]),d("input",h({type:"checkbox","aria-hidden":!0,defaultChecked:t},c,{tabIndex:-1,ref:b,style:{...e.style,...r,position:"absolute",pointerEvents:"none",opacity:0,margin:0}}))};function w(e){return e?"checked":"unchecked"}var Y=j,Z=A;export{Y as Root,j as Switch,A as SwitchThumb,Z as Thumb,V as createSwitchScope};
+//# sourceMappingURL=react-switch.mjs.map

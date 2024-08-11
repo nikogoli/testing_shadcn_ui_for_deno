@@ -1,6 +1,6 @@
 // @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
 import * as React from '../modules/esm.sh/preact@10.19.6/compat.js'
-import * as SwitchPrimitives from '@radix-ui/react-switch'
+import * as SwitchPrimitives from '../modules/esm.sh/_@radix-ui/react-switch@1.0.3.js'
 import * as AltSwitchPrimitives from "../modules/lib/components/switch.d.ts"
 
 import { cn } from '../modules/lib/utils.ts'
