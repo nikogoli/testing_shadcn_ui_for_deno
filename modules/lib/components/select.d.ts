@@ -1,4 +1,5 @@
-import * as React from "preact/compat"
+// @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
+import * as React from '../../../modules/esm.sh/preact@10.19.6/compat.js'
 import { DismissableLayerProps } from "../type-utils-MenuPrimitve.d.ts";
 import { FocusScopeProps } from "../type-utils-FocusScope.d.ts";
 import * as PopperPrimitive from "../type-utils-PopperPrimitive.d.ts"
@@ -39,7 +40,7 @@ interface SelectContentImplProps extends Omit<SelectPopperPositionProps, keyof S
   onPointerDownOutside?: DismissableLayerProps['onPointerDownOutside'];
   position?: 'item-aligned' | 'popper';
 }
-// deno-lint-ignore no-empty-interface
+
 interface SelectContentProps extends SelectContentImplProps {
 }
 
@@ -61,7 +62,6 @@ export const Item: React.ForwardRefExoticComponent<
 
 
 
-// deno-lint-ignore no-empty-interface
 interface SelectLabelProps extends PrimitiveDivProps {
 }
 export const Label: React.ForwardRefExoticComponent<
@@ -70,7 +70,6 @@ export const Label: React.ForwardRefExoticComponent<
 
 
 
-// deno-lint-ignore no-empty-interface
 interface SelectTriggerProps extends PrimitiveButtonProps {
 }
 
@@ -80,7 +79,6 @@ export const Trigger: React.ForwardRefExoticComponent<
 
 
 
-// deno-lint-ignore no-empty-interface
 interface SelectSeparatorProps extends PrimitiveDivProps {
 }
 export const Separator: React.ForwardRefExoticComponent<
