@@ -30,7 +30,7 @@ const AccordionTrigger = React.forwardRef<
       {...props}
     >
       {children}
-      <span className="i-lucide:chevron-down flex h-4 w-4 transition-transform duration-200" />
+      <span class="i-lucide:chevron-down flex h-4 w-4 transition-transform duration-200" />
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ))
@@ -51,7 +51,7 @@ const AccordionContent = React.forwardRef<
   >
     {/* ↑ add `data-[state=closed]:hidden` because AccordionPrimitive.Trigger's function
         to add `hidden={true}` to its Content-element does not work properly. */}
-    <div className="pb-4 pt-0">{children}</div>
+    <div class="pb-4 pt-0">{children}</div>
   </AccordionPrimitive.Content>
 ))
 AccordionContent.displayName = AccordionPrimitive.Content.displayName
