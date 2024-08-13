@@ -6,6 +6,11 @@ Radix UI と Tailwind CSS を用いたコンポーネントライブラリ shadc
 
 <br>
 
+[Demo のページ](https://testing-shadcn-ui-in-fresh.deno.dev/)
+※ 読み込み完了までにかなり時間がかかるので注意
+
+<br>
+
 ## 使用方法
 ```
 import { Textarea } from "https://deno.land/x/testing_shadcn_ui_for_deno@0.0.7/components/textarea.tsx"
