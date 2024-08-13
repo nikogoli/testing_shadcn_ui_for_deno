@@ -536,13 +536,13 @@ interface SliderThumbProps extends Omit<SliderThumbImplProps, 'index'> {}
 const SliderThumb = React.forwardRef<SliderThumbElement, SliderThumbProps>(
   (props: ScopedProps<SliderThumbProps>, forwardedRef) => {
     const getItems = useCollection(props.__scopeSlider);
-    const [thumb, setThumb] = React.useState<SliderThumbImplElement | null>(null);
-    const composedRefs = useComposedRefs(forwardedRef, (node) => setThumb(node));
+    const thumbRef = React.useRef<HTMLSpanElement | null>(null);
+    const [thumb, setThumb] = React.useState<HTMLSpanElement | null>(thumbRef.current);
     const index = React.useMemo(
       () => (thumb ? getItems().findIndex((item) => item.ref.current === thumb) : -1),
       [getItems, thumb]
     );
-    return <SliderThumbImpl {...props} ref={composedRefs} index={index} />;
+    return <SliderThumbImpl {...props} thumbRef={thumbRef} setter={setThumb} index={index} />;
   }
 );
 
@@ -550,15 +550,16 @@ type SliderThumbImplElement = React.ElementRef<typeof Primitive.span>;
 interface SliderThumbImplProps extends PrimitiveSpanProps {
   index: number;
   name?: string;
+  thumbRef: React.MutableRef<HTMLSpanElement | null>;
+  setter: React.SetStateAction<HTMLSpanElement | null>;
 }
 
 const SliderThumbImpl = React.forwardRef<SliderThumbImplElement, SliderThumbImplProps>(
   (props: ScopedProps<SliderThumbImplProps>, forwardedRef) => {
-    const { __scopeSlider, index, name, ...thumbProps } = props;
+    const { __scopeSlider, index, name, thumbRef, setter:setThumb, ...thumbProps } = props;
     const context = useSliderContext(THUMB_NAME, __scopeSlider);
     const orientation = useSliderOrientationContext(THUMB_NAME, __scopeSlider);
-    const [thumb, setThumb] = React.useState<HTMLSpanElement | null>(null);
-    const composedRefs = useComposedRefs(forwardedRef, (node) => setThumb(node));
+    const thumb = thumbRef.current;
     // We set this to true by default so that events bubble to forms without JS (SSR)
     const isFormControl = thumb ? Boolean(thumb.closest('form')) : true;
     const size = useSize(thumb);
@@ -581,6 +582,10 @@ const SliderThumbImpl = React.forwardRef<SliderThumbImplElement, SliderThumbImpl
       }
     }, [thumb, context.thumbs]);
 
+    React.useEffect(() => {
+      if (thumbRef.current) { setThumb(thumbRef.current) }
+    }, [thumbRef]);
+
     return (
       <span
         style={{
@@ -601,7 +606,7 @@ const SliderThumbImpl = React.forwardRef<SliderThumbImplElement, SliderThumbImpl
             data-disabled={context.disabled ? '' : undefined}
             tabIndex={context.disabled ? undefined : 0}
             {...thumbProps}
-            ref={composedRefs}
+            ref={thumbRef}
             /**
              * There will be no value on initial render while we work out the index so we hide thumbs
              * without a value, otherwise SSR will render them in the wrong position before they
