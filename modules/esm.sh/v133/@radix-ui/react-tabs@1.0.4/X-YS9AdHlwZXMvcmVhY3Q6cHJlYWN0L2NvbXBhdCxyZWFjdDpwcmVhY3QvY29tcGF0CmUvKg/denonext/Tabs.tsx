@@ -6,7 +6,6 @@ import { composeEventHandlers } from "../../../../../../esm.sh/_@radix-ui/primit
 import { createContextScope } from "../../../../../../esm.sh/v132/_@radix-ui/react-context@1.0.1.js";
 import { createRovingFocusGroupScope } from "../../../../../../esm.sh/v132/_@radix-ui/react-roving-focus@1.0.4.js";
 import { Primitive } from "../../../../../../esm.sh/v132/_@radix-ui/react-primitive@1.0.3.js";
-import { Presence } from '../../../../../../esm.sh/v132/_@radix-ui/react-presence@1.0.1.js';
 import * as RovingFocusGroup from '../../../../../../esm.sh/v132/_@radix-ui/react-roving-focus@1.0.4.js';
 import { useDirection } from "../../../../../../esm.sh/v132/_@radix-ui/react-direction@1.0.1.js";
 import { useControllableState } from "../../../../../../esm.sh/v132/_@radix-ui/react-use-controllable-state@1.0.1.js";
@@ -241,29 +240,27 @@ const TabsContent = React.forwardRef<TabsContentElement, TabsContentProps>(
       return () => cancelAnimationFrame(rAF);
     }, []);
 
+    const present = forceMount || isSelected
+
     return (
-      <Presence present={forceMount || isSelected}>
-        {({ present }) => (
-          <Primitive.div
-            data-state={isSelected ? 'active' : 'inactive'}
-            data-orientation={context.orientation}
-            role="tabpanel"
-            aria-labelledby={triggerId}
-            hidden={!present}
-            id={contentId}
-            tabIndex={0}
-            {...contentProps}
-            ref={forwardedRef}
-            style={{
-              ...props.style,
-              animationDuration: isMountAnimationPreventedRef.current ? '0s' : undefined,
-            }}
-          >
-            {present && children}
-          </Primitive.div>
-        )}
-      </Presence>
-    );
+      <Primitive.div
+        data-state={isSelected ? 'active' : 'inactive'}
+        data-orientation={context.orientation}
+        role="tabpanel"
+        aria-labelledby={triggerId}
+        hidden={!present}
+        id={contentId}
+        tabIndex={0}
+        {...contentProps}
+        ref={forwardedRef}
+        style={{
+          ...props.style,
+          animationDuration: isMountAnimationPreventedRef.current ? '0s' : undefined,
+        }}
+      >
+        {present && children}
+      </Primitive.div>
+  );
   }
 );
 
