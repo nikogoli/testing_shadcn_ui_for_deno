@@ -849,6 +849,7 @@ const NavigationMenuContentImpl = React.forwardRef<
   const {
     __scopeNavigationMenu,
     value,
+    setter,
     triggerRef,
     focusProxyRef,
     wasEscapeCloseRef,
@@ -866,6 +867,12 @@ const NavigationMenuContentImpl = React.forwardRef<
 
   const { onItemDismiss } = context;
 
+  React.useEffect(() => {
+    if (ref.current && typeof setter === "function"){
+      setter(ref.current)
+    }
+  }, [ref.current])
+  
   React.useEffect(() => {
     const content = ref.current;
 
@@ -1063,12 +1070,9 @@ const NavigationMenuViewportImpl = React.forwardRef<
         return (
           <Presence key={value} present={forceMount || isActive}>
             <NavigationMenuContentImpl
+              setter={setContent}
               {...props}
-              ref={composeRefs(ref, (node) => {
-                // We only want to update the stored node when another is available
-                // as we need to smoothly transition between them.
-                if (isActive && node) setContent(node);
-              })}
+              ref={composeRefs}
             />
           </Presence>
         );
