@@ -536,7 +536,12 @@ const ToastImpl = React.forwardRef<ToastImplElement, ToastImplProps>(
 
     React.useEffect(() => {
       onToastAdd();
-      return () => onToastRemove();
+      return () => {
+        // pause状態が上書きされないまま element が破棄された場合は pause 状態を消す
+        // (というか、新しい toast に以前の ref が引き継がれるのがおかしい)
+        context.isClosePausedRef.current = false
+        onToastRemove()
+      };
     }, [onToastAdd, onToastRemove]);
 
     const announceTextContent = React.useMemo(() => {
