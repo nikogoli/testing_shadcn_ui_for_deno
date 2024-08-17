@@ -247,7 +247,8 @@ const MenubarTrigger = React.forwardRef<MenubarTriggerElement, MenubarTriggerPro
                   context.onMenuOpen(menuContext.value);
                   // prevent trigger focusing when opening
                   // this allows the content to be given focus without competition
-                  if (!open) event.preventDefault();
+                  // ↓ を消すと click によって常にコンテンツが開くようになる
+                  //if (!open) event.preventDefault();
                 }
               })}
               onPointerEnter={composeEventHandlers(props.onPointerEnter, () => {
@@ -327,9 +328,13 @@ const MenubarContent = React.forwardRef<MenubarContentElement, MenubarContentPro
         align={align}
         onCloseAutoFocus={composeEventHandlers(props.onCloseAutoFocus, (event) => {
           const menubarOpen = Boolean(context.value);
-          if (!menubarOpen && !hasInteractedOutsideRef.current) {
-            menuContext.triggerRef.current?.focus();
-          }
+          //if (!menubarOpen && !hasInteractedOutsideRef.current) {
+          //  menuContext.triggerRef.current?.focus();
+          //}
+          // ↑ の条件部分を落とすと別のボタンに hover を移してもコンテンツが消えない
+          // focus がおかしくなるので、戻った focus はすぐに外す
+          menuContext.triggerRef.current?.focus();
+          menuContext.triggerRef.current?.blur();
 
           hasInteractedOutsideRef.current = false;
           // Always prevent auto focus because we either focus manually or want user agent focus
