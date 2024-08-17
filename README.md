@@ -13,7 +13,7 @@ Radix UI と Tailwind CSS を用いたコンポーネントライブラリ shadc
 
 ## 使用方法
 ```
-import { Textarea } from "https://deno.land/x/testing_shadcn_ui_for_deno@0.0.7/components/textarea.tsx"
+import { Textarea } from "https://deno.land/x/testing_shadcn_ui_for_deno@0.0.8/components/textarea.tsx"
 
 export default function App(){
   return (
@@ -31,7 +31,7 @@ export default function App(){
 <br>
 
 ## 利用可能なコンポーネント (v0.0.7)
-- 🆗：Accordion (...but its open/close animations do not work well)
+- 🆗：Accordion (**...but its open/close animations do not work well**)
 - 🆗：Alert
 - 🆗：AlertDialog
 - 🆗：AspectRatio
@@ -50,8 +50,8 @@ export default function App(){
 - 🆗：HoverCard
 - 🆗：Input
 - 🆗：Label
-- ⛔：MenuBar
-- ⛔：NavigationMenu
+- 🆗：MenuBar
+- 🆗：NavigationMenu
 - 🆗：Popover
 - 🆗：RadioGroup
 - 🆗：Select
@@ -62,11 +62,7 @@ export default function App(){
 - 🆗：Tabs
 - 🆗：Table
 - 🆗：TextArea
-- 🆗：Toast (...if you do not close a popup manually)
+- 🆗：Toast (**...if you do not close a popup manually**)
 - 🆗：Toggle
 - 🆗：Toolip
 
-<br>
-
-## オリジナルとの変更点
-react と preact の違いによって、オリジナルのままではうまく機能しない場合があり、その対応のために変更を加えた部分がある。詳細は CHANGES.md を参照。
