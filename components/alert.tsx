@@ -4,27 +4,34 @@ import { VariantProps, cva } from '../modules/esm.sh/class-variance-authority@0.
 
 import { cn } from '../modules/lib/utils.ts'
 
-const alertVariants = cva(
-  'relative w-full rounded-lg border p-4 [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg+div]:translate-y-[-3px] [&:has(svg)]:pl-11',
-  {
-    variants: {
-      variant: {
-        default: 'bg-background text-foreground',
-        destructive:
-          'text-destructive border-destructive/50 dark:border-destructive [&>svg]:text-destructive text-destructive',
-      },
+
+const Variants = {
+  variants: {
+    variant: {
+      default: `bg-background text-foreground [&>svg]:text-foreground`,
+      destructive:
+        `border-destructive/50 text-destructive dark:border-destructive [&>svg]:text-destructive`,
+      noColorStyle: ''
     },
-    defaultVariants: {
-      variant: 'default',
-    },
-  }
+  },
+  defaultVariants: {
+    variant: 'destructive' as const,
+  },
+}
+
+const classnamesByVariants = cva(
+  `relative w-full rounded-lg border p-4
+  [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px]
+  [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4`,
+  {...Variants}
 )
+
 
 const Alert = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof alertVariants>
+  React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof classnamesByVariants>
 >(({ class:className, variant, ...props }, ref) => (
-  <div ref={ref} role="alert" className={cn(alertVariants({ variant }), className)} {...props} />
+  <div ref={ref} role="alert" className={cn(classnamesByVariants({ variant }), className)} {...props} />
 ))
 Alert.displayName = 'Alert'
 
@@ -42,4 +49,5 @@ const AlertDescription = React.forwardRef<HTMLParagraphElement, React.HTMLAttrib
 )
 AlertDescription.displayName = 'AlertDescription'
 
-export { Alert, AlertTitle, AlertDescription }
+
+export { Alert, AlertTitle, AlertDescription, Variants as AlertVariants }
