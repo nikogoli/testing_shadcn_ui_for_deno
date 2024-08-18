@@ -1,17 +1,19 @@
-import type {
+// @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
+import {
   Component,
   ComponentProps,
+  ComponentType,
+  ForwardRefExoticComponent,
   JSX,
+  PropsWithoutRef,
+  ReactElement,
   Ref,
-  VNode,
-} from "preact";
-// @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
-import type { ForwardRefExoticComponent } from "../esm.sh/preact@10.19.6/compat.js";
-
+  RefAttributes,
+} from "../esm.sh/preact@10.19.6/compat.js";
 
 
 /**
- * Following 5 type-definitions are based on "https://esm.sh/v132/@radix-ui/react-primitive@1.0.3/X-YS9AdHlwZXMvcmVhY3Q6cHJlYWN0L2NvbXBhdCxyZWFjdDpwcmVhY3QvY29tcGF0/dist/index.d.ts",
+ * Following 3 type-definitions are based on "https://esm.sh/v132/@radix-ui/react-primitive@1.0.3/X-YS9AdHlwZXMvcmVhY3Q6cHJlYWN0L2NvbXBhdCxyZWFjdDpwcmVhY3QvY29tcGF0/dist/index.d.ts",
  * rewriting `extends ElementType` to `extends JSX.ElementType`
  */ 
 export type PrimitivePropsWithRef<E extends JSX.ElementType> = ComponentPropsWithRef<E> & {
@@ -19,7 +21,6 @@ export type PrimitivePropsWithRef<E extends JSX.ElementType> = ComponentPropsWit
 }
 
 
-// deno-lint-ignore no-empty-interface
 export interface PrimitiveForwardRefComponent<E extends JSX.ElementType> extends React.ForwardRefExoticComponent<PrimitivePropsWithRef<E>> {
 }
 
@@ -35,37 +36,28 @@ export type PropsWithRef<P> =
     : P;
 
 
-// deno-lint-ignore no-explicit-any
-export type PropsWithoutRef<P> = P extends any
-  ? ('ref' extends keyof P ? Pick<P, Exclude<keyof P, 'ref'>> : P)
-  : P;
-
-
+/**
+ * Based on https://github.com/preactjs/preact/blob/2c6df95881e7919a01b0b344025e9e799736f05b/compat/src/index.d.ts#L732,
+ */
 export type ComponentPropsWithoutRef<T extends JSX.ElementType> = PropsWithoutRef<ComponentProps<T>>;
 
 
 /**
- * Based on https://github.com/DefinitelyTyped/DefinitelyTyped/blob/27d496583874fdba0902fcefcedc53024efa259c/types/react/index.d.ts#L889,
- * rewriting `extends ElementType` to `extends JSX.ElementType`
+ * Based on https://github.com/preactjs/preact/blob/2c6df95881e7919a01b0b344025e9e799736f05b/compat/src/index.d.ts#L734,
  */
-export type ComponentPropsWithRef<T extends JSX.ElementType> = 
+export type ComponentPropsWithRef<
   // deno-lint-ignore no-explicit-any
-  T extends (new(props: infer P) => Component<any, any>)
-    ? PropsWithoutRef<P> & RefAttributes<InstanceType<T>>
-    : PropsWithRef<ComponentProps<T>>;
-
-type Key = string | number | bigint;
-interface Attributes {
-  key?: Key | null | undefined;
-}
-interface RefAttributes<T> extends Attributes {
-  ref?: Ref<T> | undefined;
-}
+  C extends ComponentType<any> | keyof JSX.IntrinsicElements
+  // deno-lint-ignore no-explicit-any
+> = C extends new (props: infer P) => Component<any, any>
+  ? PropsWithoutRef<P> & RefAttributes<InstanceType<C>>
+  : ComponentProps<C>;
 
 
+  
 /**
  * Based on "https://github.com/DefinitelyTyped/DefinitelyTyped/blob/11fb1265027fe6d75c6897dd07316b0052c13965/types/react/index.d.ts#L119",
- * rewriting `ReactNode` to `VNode`
+ * rewriting `ReactNode` to `ReactElement` (because `ReactNode` from preact/compat causes an error)
  */ 
 export type ElementRef<
   C extends
@@ -74,13 +66,11 @@ export type ElementRef<
         // deno-lint-ignore no-explicit-any
       | { new(props: any): Component<any> }
         // deno-lint-ignore no-explicit-any
-      | ((props: any, context?: any) => VNode)
+      | ((props: any, context?: any) => ReactElement)
       | keyof JSX.IntrinsicElements,
 > =
   "ref" extends keyof ComponentPropsWithRef<C>
-      ? NonNullable<ComponentPropsWithRef<C>["ref"]> extends Ref<
-          infer Instance
-      >
+      ? NonNullable<ComponentPropsWithRef<C>["ref"]> extends Ref<infer Instance>
         ? Instance
         : never
       : never;
