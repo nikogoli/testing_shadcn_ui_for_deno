@@ -1,16 +1,24 @@
-// @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
-import * as React from '../modules/esm.sh/preact@10.19.6/compat.js'
 import * as CollapsiblePrimitive from "../modules/esm.sh/v132/_@radix-ui/react-collapsible@1.0.3.js"
+import * as AltCollapsiblePrimitive from "../modules/lib/type-utils-CollapsiblePrimitive.d.ts"
 
-const Collapsible = CollapsiblePrimitive.Root
+import { cn } from '../modules/lib/utils.ts'
 
-const CollapsibleTrigger = CollapsiblePrimitive.CollapsibleTrigger
 
-function CollapsibleContent(props:React.ComponentProps<"div">){
-  const {class:classStr, ...others} = props
+const Collapsible:typeof AltCollapsiblePrimitive.Root = CollapsiblePrimitive.Root
+
+
+const CollapsibleTrigger:typeof AltCollapsiblePrimitive.Trigger = CollapsiblePrimitive.CollapsibleTrigger
+
+
+const  CollapsibleContent:typeof AltCollapsiblePrimitive.Content = ({ class:className, ...props }, ref) => {
   return(
-    <CollapsiblePrimitive.CollapsibleContent class={`data-[state=closed]:hidden ${classStr}`} {...others} />
+    <CollapsiblePrimitive.CollapsibleContent
+      ref={ref}
+      className={cn('data-[state=closed]:hidden', className)}
+      {...props}
+    />
   )
 }
+
 
 export { Collapsible, CollapsibleTrigger, CollapsibleContent }

@@ -27,7 +27,6 @@ export const Root: React.ForwardRefExoticComponent<
 
 type PrimitiveButtonProps = ComponentPropsWithoutRef<PrimitiveForwardRefComponent<"button">>;
 
-// deno-lint-ignore no-empty-interface
 interface CollapsibleTriggerProps extends PrimitiveButtonProps {
 }
 
