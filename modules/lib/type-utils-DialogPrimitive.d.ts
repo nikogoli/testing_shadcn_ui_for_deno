@@ -14,7 +14,7 @@ import { VNode } from "preact";
 // ---------- Root -----------
 
 interface DialogProps {
-  children?: VNode;
+  children?: React.ReactNode;
   open?: boolean;
   defaultOpen?: boolean;
   onOpenChange?(open: boolean): void;
