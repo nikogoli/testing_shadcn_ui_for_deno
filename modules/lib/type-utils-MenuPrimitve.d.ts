@@ -165,3 +165,10 @@ interface MenuSubContentProps extends Omit<MenuContentImplProps, keyof MenuConte
 export const SubContent: React.ForwardRefExoticComponent<
   MenuSubContentProps & React.RefAttributes<HTMLDivElement>
 >;
+
+
+// ------  Group ------------------
+
+interface MenuGroupProps extends PrimitiveDivProps {
+}
+export const Group: React.ForwardRefExoticComponent<MenuGroupProps & React.RefAttributes<HTMLDivElement>>
