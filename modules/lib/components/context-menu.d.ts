@@ -9,6 +9,24 @@ import { PrimitiveForwardRefComponent, ComponentPropsWithoutRef } from "../type-
  */ 
 
 
+// -------- Trigger -------------
+
+type PrimitiveSpanProps = ComponentPropsWithoutRef<PrimitiveForwardRefComponent<"span">>
+interface ContextMenuTriggerProps extends PrimitiveSpanProps {
+  disabled?: boolean
+}
+export const Trigger: React.ForwardRefExoticComponent<ContextMenuTriggerProps & React.RefAttributes<HTMLSpanElement>>
+
+
+// -------- MenuGroup -------------
+
+type MenuGroupProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.Group>;
+interface ContextMenuGroupProps extends MenuGroupProps {
+}
+export const Group: React.ForwardRefExoticComponent<ContextMenuGroupProps & React.RefAttributes<HTMLDivElement>>
+
+
+// -------- CheckboxItem: -------------
 
 type MenuCheckboxItemProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.CheckboxItem>;
 interface ContextMenuCheckboxItemProps extends MenuCheckboxItemProps {
@@ -18,7 +36,7 @@ export const CheckboxItem: React.ForwardRefExoticComponent<
 >;
 
 
-
+// -------- Content -------------
 
 type MenuContentProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.Content>;
 interface ContextMenuContentProps extends Omit<MenuContentProps, 'onEntryFocus' | 'side' | 'sideOffset' | 'align'> {
@@ -29,7 +47,7 @@ export const Content: React.ForwardRefExoticComponent<
 >;
 
 
-
+// -------- SubContent -------------
 
 type MenuSubContentProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.SubContent>;
 interface ContextMenuSubContentProps extends MenuSubContentProps {
@@ -40,6 +58,7 @@ export const SubContent: React.ForwardRefExoticComponent<
 >;
 
 
+// -------- Item -------------
 
 type MenuItemProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.Item>;
 interface ContextMenuItemProps extends MenuItemProps {
@@ -49,6 +68,7 @@ export const Item: React.ForwardRefExoticComponent<
 >;
 
 
+// -------- Label -------------
 
 type MenuLabelProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.Label>;
 interface ContextMenuLabelProps extends MenuLabelProps {
@@ -58,7 +78,7 @@ export const Label: React.ForwardRefExoticComponent<
 >;
 
 
-
+// -------- RadioItem -------------
 
 type MenuRadioItemProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.RadioItem>;
 interface ContextMenuRadioItemProps extends MenuRadioItemProps {
@@ -68,7 +88,7 @@ export const RadioItem: React.ForwardRefExoticComponent<
 >;
 
 
-
+// -------- SubTrigger -------------
 
 type MenuSubTriggerProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.SubTrigger>;
 interface ContextMenuSubTriggerProps extends MenuSubTriggerProps {
@@ -79,7 +99,7 @@ export const SubTrigger: React.ForwardRefExoticComponent<
 >;
 
 
-
+// -------- Separator -------------
 
 type MenuSeparatorProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.Separator>;
 interface ContextMenuSeparatorProps extends MenuSeparatorProps {
