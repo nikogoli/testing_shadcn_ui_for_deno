@@ -2,6 +2,9 @@
 import * as React from '../modules/esm.sh/preact@10.19.6/compat.js'
 import * as MenubarPrimitive from '../modules/esm.sh/v132/_@radix-ui/react-menubar@1.0.4.js'
 import * as AltMenubarPrimitive from "../modules/lib/components/menubar.d.ts"
+import IconChevronRight from "https://deno.land/x/tabler_icons_tsx@0.0.7/tsx/chevron-right.tsx"
+import IconCheck from "https://deno.land/x/tabler_icons_tsx@0.0.7/tsx/check.tsx"
+import IconCircleFilled from "https://deno.land/x/tabler_icons_tsx@0.0.7/tsx/circle-filled.tsx"
 
 import { cn } from '../modules/lib/utils.ts'
 import { ElementRef, ComponentPropsWithoutRef } from "../modules/lib/type-utils.ts"
@@ -42,7 +45,9 @@ const MenubarTrigger = React.forwardRef<
   <MenubarPrimitive.Trigger
     ref={ref}
     className={cn(
-      'flex cursor-default select-none items-center rounded-sm px-3 py-1.5 text-sm font-medium outline-none focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground',
+      `flex cursor-default select-none items-center rounded-sm px-3 py-1.5 text-sm font-medium
+       outline-none focus:bg-accent focus:text-accent-foreground
+       data-[state=open]:bg-accent data-[state=open]:text-accent-foreground`,
       className
     )}
     {...props}
@@ -60,14 +65,16 @@ const MenubarSubTrigger = React.forwardRef<
   <MenubarPrimitive.SubTrigger
     ref={ref}
     className={cn(
-      'flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground',
+      `flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm
+       outline-none focus:bg-accent focus:text-accent-foreground
+       data-[state=open]:bg-accent data-[state=open]:text-accent-foreground`,
       inset && 'pl-8',
       className
     )}
     {...props}
   >
     {children}
-    <span className="i-lucide:chevron-right flex ml-auto h-4 w-4" />
+    <IconChevronRight class="ml-auto h-4 w-4" />
   </MenubarPrimitive.SubTrigger>
 ))
 MenubarSubTrigger.displayName = MenubarPrimitive.SubTrigger.displayName
@@ -80,7 +87,12 @@ const MenubarSubContent = React.forwardRef<
   <MenubarPrimitive.SubContent
     ref={ref}
     className={cn(
-      'z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md animate-in data-[side=bottom]:slide-in-from-top-1 data-[side=left]:slide-in-from-right-1 data-[side=right]:slide-in-from-left-1 data-[side=top]:slide-in-from-bottom-1',
+      `z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground
+       data-[state=open]:data-[side=left]:animate-slidein-fromright
+       data-[state=open]:data-[side=right]:animate-slidein-fromleft
+       data-[state=open]:data-[side=top]:animate-slidein-frombottom
+       data-[state=open]:data-[side=bottom]:animate-slidein-fromtop
+       data-[state=closed]:animate-zoomout-95`,
       className
     )}
     {...props}
@@ -100,7 +112,11 @@ const MenubarContent = React.forwardRef<
       alignOffset={alignOffset}
       sideOffset={sideOffset}
       className={cn(
-        'z-50 min-w-[12rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md animate-in slide-in-from-top-1',
+        `z-50 min-w-[12rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md
+         data-[state=open]:data-[side=left]:animate-slidein-fromright
+         data-[state=open]:data-[side=right]:animate-slidein-fromleft
+         data-[state=open]:data-[side=top]:animate-slidein-frombottom
+         data-[state=open]:data-[side=bottom]:animate-slidein-fromtop`,
         className
       )}
       {...props}
@@ -119,7 +135,9 @@ const MenubarItem = React.forwardRef<
   <MenubarPrimitive.Item
     ref={ref}
     className={cn(
-      'relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+      `relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm
+       outline-none focus:bg-accent focus:text-accent-foreground
+       data-[disabled]:pointer-events-none data-[disabled]:opacity-50`,
       inset && 'pl-8',
       className
     )}
@@ -136,15 +154,17 @@ const MenubarCheckboxItem = React.forwardRef<
   <MenubarPrimitive.CheckboxItem
     ref={ref}
     className={cn(
-      'relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+      `relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm
+       outline-none focus:bg-accent focus:text-accent-foreground
+       data-[disabled]:pointer-events-none data-[disabled]:opacity-50`,
       className
     )}
     checked={checked}
     {...props}
   >
-    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+    <span class="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
       <MenubarPrimitive.ItemIndicator>
-        <span className="i-lucide:check flex h-4 w-4" />
+        <IconCheck class="h-4 w-4" />
       </MenubarPrimitive.ItemIndicator>
     </span>
     {children}
@@ -160,14 +180,16 @@ const MenubarRadioItem = React.forwardRef<
   <MenubarPrimitive.RadioItem
     ref={ref}
     className={cn(
-      'relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+      `relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm
+       outline-none focus:bg-accent focus:text-accent-foreground
+       data-[disabled]:pointer-events-none data-[disabled]:opacity-50`,
       className
     )}
     {...props}
   >
-    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+    <span class="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
       <MenubarPrimitive.ItemIndicator>
-        <span className="i-tabler:circle-filled flex h-2 w-2 text-current" />
+        <IconCircleFilled class="h-2 w-2 text-current" />
       </MenubarPrimitive.ItemIndicator>
     </span>
     {children}
