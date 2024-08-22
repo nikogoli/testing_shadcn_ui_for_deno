@@ -6,9 +6,12 @@ import * as AltPopoverPrimitive from "../modules/lib/components/popover.d.ts"
 import { cn } from '../modules/lib/utils.ts'
 import { ElementRef, ComponentPropsWithoutRef } from "../modules/lib/type-utils.ts"
 
+
 const Popover = PopoverPrimitive.Root
 
+
 const PopoverTrigger = PopoverPrimitive.Trigger
+
 
 const PopoverContent = React.forwardRef<
   ElementRef<typeof AltPopoverPrimitive.Content>,
@@ -20,7 +23,12 @@ const PopoverContent = React.forwardRef<
       align={align}
       sideOffset={sideOffset}
       className={cn(
-        'z-50 w-72 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-none animate-in data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
+        `z-50 w-72 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-none
+         data-[state=open]:data-[side=left]:animate-slidein-fromright
+         data-[state=open]:data-[side=right]:animate-slidein-fromleft
+         data-[state=open]:data-[side=top]:animate-slidein-frombottom
+         data-[state=open]:data-[side=bottom]:animate-slidein-fromtop
+         data-[state=closed]:animate-zoomout-95`,
         className
       )}
       {...props}
@@ -28,5 +36,6 @@ const PopoverContent = React.forwardRef<
   </PopoverPrimitive.Portal>
 ))
 PopoverContent.displayName = PopoverPrimitive.Content.displayName
+
 
 export { Popover, PopoverTrigger, PopoverContent }
