@@ -1,7 +1,8 @@
 import { useState, useEffect } from "preact/hooks";
 import {
     Toast, ToastClose, ToastDescription, ToastProvider,
-    ToastTitle, ToastViewport, ToastAction
+    ToastTitle, ToastViewport, ToastAction,
+    toastVariants
 } from './toastElems.tsx'
 
 import { ComponentPropsWithoutRef } from "../modules/lib/type-utils.ts";
@@ -12,8 +13,10 @@ export {
   Toaster,
   useToast,
   Toast, ToastClose, ToastDescription, ToastProvider,
-  ToastTitle, ToastViewport, ToastAction
+  ToastTitle, ToastViewport, ToastAction,
+  toastVariants
 }
+
 
 type ToastProps = ComponentPropsWithoutRef<typeof Toast>
 
@@ -27,13 +30,15 @@ type ToasterToast = ToastProps & {
   action?: ToastActionElement
 }
 
-function Toaster() {
+
+function Toaster(props:ToastProps) {
   const { toasts } = useToast()
+  const { variant, ...others } = props
   return (
     <ToastProvider>
       {toasts.map(function ({ id, title, description, action, ...props }) {
         return (
-          <Toast key={id} {...props}>
+          <Toast key={id} variant={variant} {...others} {...props} >
             <div class="grid gap-1">
               {title && <ToastTitle>{title}</ToastTitle>}
               {description && <ToastDescription>{description}</ToastDescription>}
