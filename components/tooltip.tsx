@@ -6,21 +6,31 @@ import * as AlitTooltipPrimitive from "../modules/lib/components/tooltip.d.ts"
 import { cn } from '../modules/lib/utils.ts'
 import { ElementRef, ComponentPropsWithoutRef } from "../modules/lib/type-utils.ts"
 
+
 const TooltipProvider = TooltipPrimitive.Provider
+
 
 const Tooltip = TooltipPrimitive.Root
 
+
 const TooltipTrigger = TooltipPrimitive.Trigger
+
 
 const TooltipContent = React.forwardRef<
   ElementRef<typeof AlitTooltipPrimitive.Content>,
   ComponentPropsWithoutRef<typeof AlitTooltipPrimitive.Content>
->(({ class:className, sideOffset = 4, ...props }, ref) => (
+>(({ class:className, sideOffset=4, ...props }, ref) => (
   <TooltipPrimitive.Content
     ref={ref}
     sideOffset={sideOffset}
     className={cn(
-      'z-50 overflow-hidden rounded-md border bg-popover px-3 py-1.5 text-sm text-popover-foreground shadow-md animate-in fade-in-50 data-[side=bottom]:slide-in-from-top-1 data-[side=left]:slide-in-from-right-1 data-[side=right]:slide-in-from-left-1 data-[side=top]:slide-in-from-bottom-1',
+      `z-50 overflow-hidden rounded-md border bg-popover px-3 py-1.5
+       text-sm text-popover-foreground shadow-md
+       data-[side=left]:animate-slidein-fromright
+       data-[side=right]:animate-slidein-fromleft
+       data-[side=top]:animate-slidein-frombottom
+       data-[side=bottom]:animate-slidein-fromtop
+       data-[state=closed]:animate-zoomout-95`,
       className
     )}
     {...props}
@@ -28,4 +38,10 @@ const TooltipContent = React.forwardRef<
 ))
 TooltipContent.displayName = TooltipPrimitive.Content.displayName
 
-export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider }
+
+export {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipProvider
+}
