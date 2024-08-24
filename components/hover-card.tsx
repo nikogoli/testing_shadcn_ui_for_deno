@@ -6,6 +6,7 @@ import * as AltHoverCardPrimitive from "../modules/lib/components/hover-card.d.t
 import { cn } from '../modules/lib/utils.ts'
 import { ElementRef, ComponentPropsWithoutRef } from "../modules/lib/type-utils.ts"
 
+
 const HoverCard = HoverCardPrimitive.Root
 
 
@@ -21,7 +22,12 @@ const HoverCardContent = React.forwardRef<
     align={align}
     sideOffset={sideOffset}
     className={cn(
-      'animate-in zoom-in-90 z-50 w-64 rounded-md border border-slate-100 bg-white p-4 shadow-md outline-none dark:border-slate-800 dark:bg-slate-800',
+      `z-50 w-64 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-none
+       data-[state=open]:data-[side=left]:animate-slidein-fromright
+       data-[state=open]:data-[side=right]:animate-slidein-fromleft
+       data-[state=open]:data-[side=top]:animate-slidein-frombottom
+       data-[state=open]:data-[side=bottom]:animate-slidein-fromtop
+       data-[state=closed]:animate-zoomout-95`,
       className
     )}
     {...props}
@@ -29,4 +35,9 @@ const HoverCardContent = React.forwardRef<
 ))
 HoverCardContent.displayName = HoverCardPrimitive.Content.displayName
 
-export { HoverCard, HoverCardTrigger, HoverCardContent }
+
+export {
+  HoverCard,
+  HoverCardTrigger,
+  HoverCardContent
+}
