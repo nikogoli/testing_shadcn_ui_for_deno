@@ -58,7 +58,9 @@ export type ComponentPropsWithRef<
 /**
  * Based on "https://github.com/DefinitelyTyped/DefinitelyTyped/blob/11fb1265027fe6d75c6897dd07316b0052c13965/types/react/index.d.ts#L119",
  * rewriting `ReactNode` to `ReactElement` (because `ReactNode` from preact/compat causes an error)
+ * and use `PreactRef` instead of `Ref` because the latter does not include `RefCallback<T>`
  */ 
+type PreactRef<T> = NonNullable<RefAttributes<T>["ref"]>
 export type ElementRef<
   C extends
         // deno-lint-ignore no-explicit-any
@@ -70,7 +72,7 @@ export type ElementRef<
       | keyof JSX.IntrinsicElements,
 > =
   "ref" extends keyof ComponentPropsWithRef<C>
-      ? NonNullable<ComponentPropsWithRef<C>["ref"]> extends Ref<infer Instance>
+      ? NonNullable<ComponentPropsWithRef<C>["ref"]> extends PreactRef<infer Instance>
         ? Instance
         : never
       : never;
