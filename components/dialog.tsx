@@ -2,21 +2,22 @@
 import * as React from '../modules/esm.sh/preact@10.19.6/compat.js'
 import * as DialogPrimitive from '../modules/esm.sh/v132/_@radix-ui/react-dialog@1.0.5.js'
 import * as AltDialogPrimitive from "../modules/lib/components/dialog.d.ts"
+import IconX from "https://deno.land/x/tabler_icons_tsx@0.0.7/tsx/x.tsx"
 
 import { cn } from '../modules/lib/utils.ts'
 import { ElementRef, ComponentPropsWithoutRef } from "../modules/lib/type-utils.ts"
 
+
 const Dialog = DialogPrimitive.Root
+
 
 const DialogTrigger = DialogPrimitive.Trigger
 
 
-const DialogPortal = ({ class:className, children, ...props }: AltDialogPrimitive.DialogPortalProps) => (
-  <DialogPrimitive.Portal className={cn(className)} {...props}>
-    <div className="fixed inset-0 z-50 flex items-start justify-center sm:items-center">{children}</div>
-  </DialogPrimitive.Portal>
-)
-DialogPortal.displayName = DialogPrimitive.Portal.displayName
+const DialogPortal = DialogPrimitive.Portal
+ 
+
+const DialogClose = DialogPrimitive.Close
 
 
 const DialogOverlay = React.forwardRef<
@@ -26,7 +27,8 @@ const DialogOverlay = React.forwardRef<
   <DialogPrimitive.Overlay
     ref={ref}
     className={cn(
-      'fixed inset-0 z-50 bg-black/80 backdrop-blur-sm transition-all duration-100 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=open]:fade-in',
+      `fixed inset-0 z-50 bg-black/80
+       data-[state=open]:animate-in data-[state=closed]:animate-out`,
       className
     )}
     {...props}
@@ -44,14 +46,21 @@ const DialogContent = React.forwardRef<
     <DialogPrimitive.Content
       ref={ref}
       className={cn(
-        'fixed z-50 grid w-full gap-4 rounded-b-lg border bg-background p-6 shadow-lg animate-in data-[state=open]:fade-in-90 data-[state=open]:slide-in-from-bottom-10 sm:max-w-lg sm:rounded-lg sm:zoom-in-90 data-[state=open]:sm:slide-in-from-bottom-0',
+        `fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%]
+         gap-4 border bg-background p-6 shadow-lg [animation-duration:200] sm:rounded-lg
+         data-[state=open]:animate-dialog-in
+         data-[state=closed]:animate-dialog-out`,
         className
       )}
       {...props}
     >
       {children}
-      <DialogPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
-        <span class="i-lucide:x flex h-4 w-4" />
+      <DialogPrimitive.Close
+        className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background
+         transition-opacity hover:opacity-100 disabled:pointer-events-none
+         focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2
+         data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
+        <IconX class="h-4 w-4" />
         <span class="sr-only">Close</span>
       </DialogPrimitive.Close>
     </DialogPrimitive.Content>
@@ -61,13 +70,17 @@ DialogContent.displayName = DialogPrimitive.Content.displayName
 
 
 const DialogHeader = ({ class:className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn('flex flex-col space-y-1.5 text-center sm:text-left', className)} {...props} />
+  <div
+    class={cn('flex flex-col space-y-1.5 text-center sm:text-left', className)}
+    {...props} />
 )
 DialogHeader.displayName = 'DialogHeader'
 
 
 const DialogFooter = ({ class:className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn('flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2', className)} {...props} />
+  <div
+    class={cn('flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2', className)}
+    {...props} />
 )
 DialogFooter.displayName = 'DialogFooter'
 
@@ -89,9 +102,23 @@ const DialogDescription = React.forwardRef<
   ElementRef<typeof AltDialogPrimitive.Description>,
   ComponentPropsWithoutRef<typeof AltDialogPrimitive.Description>
 >(({ class:className, ...props }, ref) => (
-  <DialogPrimitive.Description ref={ref} className={cn('text-sm text-muted-foreground', className)} {...props} />
+  <DialogPrimitive.Description
+    ref={ref}
+    className={cn('text-sm text-muted-foreground', className)}
+    {...props} />
 ))
 DialogDescription.displayName = DialogPrimitive.Description.displayName
 
 
-export { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription }
+export {
+  Dialog,
+  DialogPortal,
+  DialogOverlay,
+  DialogClose,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogFooter,
+  DialogTitle,
+  DialogDescription,
+}
