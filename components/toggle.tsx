@@ -7,34 +7,47 @@ import { cn } from '../modules/lib/utils.ts'
 import { ElementRef, ComponentPropsWithoutRef } from "../modules/lib/type-utils.ts"
 import * as AltTogglePrimitive from "../modules/lib/components/toggle.d.ts"
 
-const toggleVariants = cva(
-  'inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors data-[state=on]:bg-accent data-[state=on]:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 ring-offset-background hover:bg-muted hover:text-muted-foreground',
-  {
-    variants: {
-      variant: {
-        default: 'bg-transparent',
-        outline: 'bg-transparent border border-input hover:bg-accent hover:text-accent-foreground',
-      },
-      size: {
-        default: 'h-10 px-3',
-        sm: 'h-9 px-2.5',
-        lg: 'h-11 px-5',
-      },
+
+const Variants = {
+  variants: {
+    variant: {
+      default: 'bg-transparent',
+      outline: 'border border-input bg-transparent hover:bg-accent hover:text-accent-foreground',
     },
-    defaultVariants: {
-      variant: 'default',
-      size: 'default',
+    size: {
+      default: 'h-10 px-3',
+      sm: 'h-9 px-2.5',
+      lg: 'h-11 px-5',
     },
+  },
+  defaultVariants: {
+    variant: 'default' as const,
+    size: 'default' as const,
   }
+}
+
+
+const classnamesByVariants = cva(
+  `inline-flex items-center justify-center rounded-md text-sm font-medium
+   ring-offset-background transition-colors hover:bg-muted hover:text-muted-foreground
+   focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2
+   disabled:pointer-events-none disabled:opacity-50
+   data-[state=on]:bg-accent data-[state=on]:text-accent-foreground`,
+  { ... Variants }
 )
+
 
 const Toggle = React.forwardRef<
   ElementRef<typeof AltTogglePrimitive.Root>,
-  ComponentPropsWithoutRef<typeof AltTogglePrimitive.Root> & VariantProps<typeof toggleVariants>
+  ComponentPropsWithoutRef<typeof AltTogglePrimitive.Root> & VariantProps<typeof classnamesByVariants>
 >(({ class:className, variant, size, ...props }, ref) => (
-  <TogglePrimitive.Root ref={ref} className={cn(toggleVariants({ variant, size, className }))} {...props} />
+  <TogglePrimitive.Root
+    ref={ref}
+    className={cn(classnamesByVariants({ variant, size, className }))}
+    {...props} />
 ))
 
 Toggle.displayName = TogglePrimitive.Root.displayName
 
-export { Toggle, toggleVariants }
+
+export { Toggle, Variants as toggleVariants }
