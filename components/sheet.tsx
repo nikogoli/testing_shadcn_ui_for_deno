@@ -35,7 +35,7 @@ const Variants = {
 
 const classnamesByVariants = cva(
   `fixed z-50 gap-4 bg-background p-6 shadow-lg transition ease-in-out
-   data-[state=closed]:[animation-duration:.3s] data-[state=open]:[animation-duration:.5s]`,
+   data-[state=closed]:![animation-duration:.3s] data-[state=open]:![animation-duration:.5s]`,
   { ...Variants }
 )
 
