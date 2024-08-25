@@ -1,20 +1,23 @@
 // @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
 import * as React from '../modules/esm.sh/preact@10.19.6/compat.js'
-import { DialogProps } from '../modules/esm.sh/v132/_@radix-ui/react-dialog@1.0.5.js'
-import IconSearch from "https://deno.land/x/tabler_icons_tsx@0.0.7/tsx/search.tsx"
-
+// @deno-types="../modules/lib/type-utils-cmdk.d.ts"
 import { Command as CommandPrimitive } from '../modules/esm.sh/_cmdk@0.2.0.js'
-import { Command as AltCommandPrimitive } from "../modules/lib/type-utils-cmdk.d.ts"
+import { Command as CommandTypes } from "../modules/lib/type-utils-cmdk.d.ts"
+import { Root as DialogRoot } from "../modules/lib/components/dialog.d.ts";
 
 import { cn } from '../modules/lib/utils.ts'
 import { ElementRef, ComponentPropsWithoutRef } from "../modules/lib/type-utils.ts"
 
+import IconSearch from "https://deno.land/x/tabler_icons_tsx@0.0.7/tsx/search.tsx"
 import { Dialog, DialogContent } from './dialog.tsx'
 
 
+type DialogProps = ComponentPropsWithoutRef<typeof DialogRoot>
+
+
 const Command = React.forwardRef<
-  ElementRef<typeof AltCommandPrimitive>,
-  ComponentPropsWithoutRef<typeof AltCommandPrimitive>
+  ElementRef<typeof CommandTypes>,
+  ComponentPropsWithoutRef<typeof CommandTypes>
 >(({ class:className, ...props }, ref) => (
   <CommandPrimitive
     ref={ref}
@@ -50,15 +53,16 @@ const CommandDialog = ({ children, ...props }: CommandDialogProps) => {
 
 
 const CommandInput = React.forwardRef<
-  ElementRef<typeof AltCommandPrimitive.Input>,
-  ComponentPropsWithoutRef<typeof AltCommandPrimitive.Input>
+  ElementRef<typeof CommandTypes.Input>,
+  ComponentPropsWithoutRef<typeof CommandTypes.Input>
 >(({ class:className, ...props }, ref) => (
   <div class="flex items-center border-b px-3" cmdk-input-wrapper="">
     <IconSearch class="flex mr-2 h-4 w-4 shrink-0 opacity-50" />
     <CommandPrimitive.Input
       ref={ref}
       className={cn(
-        'flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50',
+        `flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-none
+         placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50`,
         className
       )}
       {...props}
@@ -69,8 +73,8 @@ CommandInput.displayName = CommandPrimitive.Input.displayName
 
 
 const CommandList = React.forwardRef<
-  ElementRef<typeof AltCommandPrimitive.List>,
-  ComponentPropsWithoutRef<typeof AltCommandPrimitive.List>
+  ElementRef<typeof CommandTypes.List>,
+  ComponentPropsWithoutRef<typeof CommandTypes.List>
 >(({ class:className, ...props }, ref) => (
   <CommandPrimitive.List
     ref={ref}
@@ -82,15 +86,19 @@ CommandList.displayName = CommandPrimitive.List.displayName
 
 
 const CommandEmpty = React.forwardRef<
-  ElementRef<typeof AltCommandPrimitive.Empty>,
-  ComponentPropsWithoutRef<typeof AltCommandPrimitive.Empty>
->((props, ref) => <CommandPrimitive.Empty ref={ref} className="py-6 text-center text-sm" {...props} />)
+  ElementRef<typeof CommandTypes.Empty>,
+  ComponentPropsWithoutRef<typeof CommandTypes.Empty>
+>((props, ref) => 
+  <CommandPrimitive.Empty
+    ref={ref}
+    className="py-6 text-center text-sm"
+    {...props} />)
 CommandEmpty.displayName = CommandPrimitive.Empty.displayName
 
 
 const CommandGroup = React.forwardRef<
-  ElementRef<typeof AltCommandPrimitive.Group>,
-  ComponentPropsWithoutRef<typeof AltCommandPrimitive.Group>
+  ElementRef<typeof CommandTypes.Group>,
+  ComponentPropsWithoutRef<typeof CommandTypes.Group>
 >(({ class:className, ...props }, ref) => (
   <CommandPrimitive.Group
     ref={ref}
@@ -107,24 +115,27 @@ CommandGroup.displayName = CommandPrimitive.Group.displayName
 
 
 const CommandSeparator = React.forwardRef<
-  ElementRef<typeof AltCommandPrimitive.Separator>,
-  ComponentPropsWithoutRef<typeof AltCommandPrimitive.Separator>
+  ElementRef<typeof CommandTypes.Separator>,
+  ComponentPropsWithoutRef<typeof CommandTypes.Separator>
 >(({ class:className, ...props }, ref) => (
-  <CommandPrimitive.Separator ref={ref} className={cn('-mx-1 h-px bg-border', className)} {...props} />
+  <CommandPrimitive.Separator
+    ref={ref}
+    className={cn('-mx-1 h-px bg-border', className)}
+    {...props} />
 ))
 CommandSeparator.displayName = CommandPrimitive.Separator.displayName
 
 
 const CommandItem = React.forwardRef<
-  ElementRef<typeof AltCommandPrimitive.Item>,
-  ComponentPropsWithoutRef<typeof AltCommandPrimitive.Item>
+  ElementRef<typeof CommandTypes.Item>,
+  ComponentPropsWithoutRef<typeof CommandTypes.Item>
 >(({ class:className, ...props }, ref) => (
   <CommandPrimitive.Item
     ref={ref}
     className={cn(
       `relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none
-      data-[selected='true']:bg-accent data-[selected=true]:text-accent-foreground
-      aria-[disabled=true]:pointer-events-none aria-[disabled=true]:opacity-50`,
+       data-[selected='true']:bg-accent data-[selected=true]:text-accent-foreground
+       aria-[disabled=true]:pointer-events-none aria-[disabled=true]:opacity-50`,
       className // ↑ somehow 'data-disabled' is not added to an element, so use 'aria-disabled' instead. (nikogoli)
     )}
     {...props}
