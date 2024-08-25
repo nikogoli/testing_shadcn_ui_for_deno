@@ -1,13 +1,16 @@
 // @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
 import * as React from '../../esm.sh/preact@10.19.6/compat.js'
-import { PrimitiveForwardRefComponent, ComponentPropsWithoutRef } from "../type-utils.ts"
+import { PrimitiveButtonProps, PrimitiveSpanProps } from "../type-utils-Primitive.d.ts"
 
-/**
- * Following type-definitions are based on "https://esm.sh/v132/@radix-ui/react-checkbox@1.0.4/X-YS9AdHlwZXMvcmVhY3Q6cHJlYWN0L2NvbXBhdCxyZWFjdDpwcmVhY3QvY29tcGF0CmUvKg/dist/index.d.ts"
- */ 
+
+/* -------------------------------------------------------------------------------------------------
+ * Root
+ * -----------------------------------------------------------------------------------------------*/
+export const Root: React.ForwardRefExoticComponent<
+  CheckboxProps & React.RefAttributes<HTMLButtonElement>
+>;
 
 type CheckedState = boolean | 'indeterminate';
-type PrimitiveButtonProps = ComponentPropsWithoutRef<PrimitiveForwardRefComponent<"button">>;
 interface CheckboxProps extends Omit<PrimitiveButtonProps, 'checked' | 'defaultChecked'> {
     checked?: CheckedState;
     defaultChecked?: CheckedState;
@@ -15,6 +18,15 @@ interface CheckboxProps extends Omit<PrimitiveButtonProps, 'checked' | 'defaultC
     onCheckedChange?(checked: CheckedState): void;
 }
 
-export const Root: React.ForwardRefExoticComponent<
-  CheckboxProps & React.RefAttributes<HTMLButtonElement>
->;
+
+/* -------------------------------------------------------------------------------------------------
+ * Indicator
+ * -----------------------------------------------------------------------------------------------*/
+export const Indicator: React.ForwardRefExoticComponent<CheckboxIndicatorProps & React.RefAttributes<HTMLSpanElement>>;
+interface CheckboxIndicatorProps extends PrimitiveSpanProps {
+  /**
+   * Used to force mounting when more control is needed. Useful when
+   * controlling animation with React animation libraries.
+   */
+  forceMount?: true;
+}
