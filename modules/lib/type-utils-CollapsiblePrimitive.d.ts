@@ -1,14 +1,14 @@
 // @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
 import * as React from '../../modules/esm.sh/preact@10.19.6/compat.js'
-import { PrimitiveForwardRefComponent, ComponentPropsWithoutRef } from "./type-utils.ts"
+import { PrimitiveDivProps, PrimitiveButtonProps } from "./type-utils-Primitive.d.ts"
 
-/**
- * Following type-definitions are based on "https://esm.sh/v132/@radix-ui/react-collapsible@1.0.3/X-YS9AdHlwZXMvcmVhY3Q6cHJlYWN0L2NvbXBhdCxyZWFjdDpwcmVhY3QvY29tcGF0/dist/index.d.ts"
- */ 
 
-// -------- Root -------------
-
-type PrimitiveDivProps = ComponentPropsWithoutRef<PrimitiveForwardRefComponent<"div">>
+/* -------------------------------------------------------------------------------------------------
+ * Root
+ * -----------------------------------------------------------------------------------------------*/
+export const Root: React.ForwardRefExoticComponent<
+  CollapsiblePrimitiveProps & React.RefAttributes<HTMLDivElement>
+>
 
 interface CollapsiblePrimitiveProps extends PrimitiveDivProps {
   defaultOpen?: boolean;
@@ -17,26 +17,24 @@ interface CollapsiblePrimitiveProps extends PrimitiveDivProps {
   onOpenChange?(open: boolean): void;
 }
 
-export const Root: React.ForwardRefExoticComponent<
-  CollapsiblePrimitiveProps & React.RefAttributes<HTMLDivElement>
->
 
-
-
-// -------- Trigger -------------
-
-type PrimitiveButtonProps = ComponentPropsWithoutRef<PrimitiveForwardRefComponent<"button">>;
-
-interface CollapsibleTriggerProps extends PrimitiveButtonProps {
-}
-
+/* -------------------------------------------------------------------------------------------------
+ * Trigger
+ * -----------------------------------------------------------------------------------------------*/
 export const Trigger: React.ForwardRefExoticComponent<
   CollapsibleTriggerProps & React.RefAttributes<HTMLButtonElement>
 >
 
+interface CollapsibleTriggerProps extends PrimitiveButtonProps {
+}
 
 
-// -------- Content -------------
+/* -------------------------------------------------------------------------------------------------
+ * Content
+ * -----------------------------------------------------------------------------------------------*/
+export const Content: React.ForwardRefExoticComponent<
+  CollapsibleContentProps & React.RefAttributes<HTMLDivElement>
+>
 
 interface CollapsibleContentImplProps extends PrimitiveDivProps {
   present: boolean;
@@ -49,7 +47,3 @@ interface CollapsibleContentProps extends Omit<CollapsibleContentImplProps, 'pre
    */
   forceMount?: true;
 }
-
-export const Content: React.ForwardRefExoticComponent<
-  CollapsibleContentProps & React.RefAttributes<HTMLDivElement>
->
