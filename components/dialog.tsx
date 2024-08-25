@@ -1,7 +1,9 @@
 // @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
 import * as React from '../modules/esm.sh/preact@10.19.6/compat.js'
+// @deno-types="../modules/lib/components/dialog.d.ts"
 import * as DialogPrimitive from '../modules/esm.sh/v132/_@radix-ui/react-dialog@1.0.5.js'
-import * as AltDialogPrimitive from "../modules/lib/components/dialog.d.ts"
+import * as AltDialogTypes from "../modules/lib/components/dialog.d.ts"
+
 import IconX from "https://deno.land/x/tabler_icons_tsx@0.0.7/tsx/x.tsx"
 
 import { cn } from '../modules/lib/utils.ts'
@@ -21,8 +23,8 @@ const DialogClose = DialogPrimitive.Close
 
 
 const DialogOverlay = React.forwardRef<
-  ElementRef<typeof AltDialogPrimitive.Overlay>,
-  ComponentPropsWithoutRef<typeof AltDialogPrimitive.Overlay>
+  ElementRef<typeof AltDialogTypes.Overlay>,
+  ComponentPropsWithoutRef<typeof AltDialogTypes.Overlay>
 >(({ class:className, ...props }, ref) => (
   <DialogPrimitive.Overlay
     ref={ref}
@@ -38,8 +40,8 @@ DialogOverlay.displayName = DialogPrimitive.Overlay.displayName
 
 
 const DialogContent = React.forwardRef<
-  ElementRef<typeof AltDialogPrimitive.Content>,
-  ComponentPropsWithoutRef<typeof AltDialogPrimitive.Content>
+  ElementRef<typeof AltDialogTypes.Content>,
+  ComponentPropsWithoutRef<typeof AltDialogTypes.Content>
 >(({ class:className, children, ...props }, ref) => (
   <DialogPortal>
     <DialogOverlay />
@@ -47,7 +49,7 @@ const DialogContent = React.forwardRef<
       ref={ref}
       className={cn(
         `fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%]
-         gap-4 border bg-background p-6 shadow-lg [animation-duration:200] sm:rounded-lg
+         gap-4 border bg-background p-6 shadow-lg [animation-duration:0.2s] sm:rounded-lg
          data-[state=open]:animate-dialog-in
          data-[state=closed]:animate-dialog-out`,
         className
@@ -86,8 +88,8 @@ DialogFooter.displayName = 'DialogFooter'
 
 
 const DialogTitle = React.forwardRef<
-  ElementRef<typeof AltDialogPrimitive.Title>,
-  ComponentPropsWithoutRef<typeof AltDialogPrimitive.Title>
+  ElementRef<typeof AltDialogTypes.Title>,
+  ComponentPropsWithoutRef<typeof AltDialogTypes.Title>
 >(({ class:className, ...props }, ref) => (
   <DialogPrimitive.Title
     ref={ref}
@@ -99,8 +101,8 @@ DialogTitle.displayName = DialogPrimitive.Title.displayName
 
 
 const DialogDescription = React.forwardRef<
-  ElementRef<typeof AltDialogPrimitive.Description>,
-  ComponentPropsWithoutRef<typeof AltDialogPrimitive.Description>
+  ElementRef<typeof AltDialogTypes.Description>,
+  ComponentPropsWithoutRef<typeof AltDialogTypes.Description>
 >(({ class:className, ...props }, ref) => (
   <DialogPrimitive.Description
     ref={ref}

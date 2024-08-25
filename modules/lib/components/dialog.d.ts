@@ -1,23 +1,93 @@
 // @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
 import * as React from '../../esm.sh/preact@10.19.6/compat.js'
-import { PrimitiveForwardRefComponent, ComponentPropsWithoutRef } from "../type-utils.ts"
-import * as AltDialogPrimitive from "../type-utils-DialogPrimitive.d.ts"
+import { ComponentPropsWithoutRef } from "../type-utils.ts"
+
 import { DismissableLayer } from "../type-utils-DismissableLayer.d.ts";
 import { FocusScope } from "../type-utils-FocusScope.d.ts";
-import { PortalProps } from "../type-utils-DialogPrimitive.d.ts"; 
-import { VNode } from "preact";
-
-/**
- * Following type-definitions are based on "https://esm.sh/v132/@radix-ui/react-dialog@1.0.5/X-YS9AdHlwZXMvcmVhY3Q6cHJlYWN0L2NvbXBhdCxyZWFjdDpwcmVhY3QvY29tcGF0CmUvKg/dist/index.d.ts"
- */ 
-
-
-type PrimitiveDivProps = ComponentPropsWithoutRef<PrimitiveForwardRefComponent<"div">>;
+import { PortalProps } from "../type-utils-PortalPrimitive.d.ts"; 
+import {
+  PrimitiveDivProps,
+  PrimitiveButtonProps,
+  PrimitiveHeading2Props,
+  PrimitiveParagraphProps,  
+} from "../type-utils-Primitive.d.ts"
 
 
+/* -------------------------------------------------------------------------------------------------
+ * Root
+ * -----------------------------------------------------------------------------------------------*/
+export const Root: React.FC<DialogProps>;
 
-type DismissableLayerProps = ComponentPropsWithoutRef<typeof DismissableLayer>;
-type FocusScopeProps = ComponentPropsWithoutRef<typeof FocusScope>;
+interface DialogProps {
+  children?: React.ReactNode;
+  open?: boolean;
+  defaultOpen?: boolean;
+  onOpenChange?(open: boolean): void;
+  modal?: boolean;
+}
+
+
+/* -------------------------------------------------------------------------------------------------
+ * Trigger
+ * -----------------------------------------------------------------------------------------------*/
+export const Trigger: React.ForwardRefExoticComponent<DialogTriggerProps & React.RefAttributes<HTMLButtonElement>>;
+
+interface DialogTriggerProps extends PrimitiveButtonProps {
+}
+
+
+/* -------------------------------------------------------------------------------------------------
+ * Portal
+ * -----------------------------------------------------------------------------------------------*/
+export const Portal: React.FC<DialogPortalProps>;
+
+interface DialogPortalProps {
+    children?: React.ReactNode;
+    /**
+     * Specify a container element to portal the content into.
+     */
+    container?: PortalProps['container'];
+    /**
+     * Used to force mounting when more control is needed. Useful when
+     * controlling animation with React animation libraries.
+     */
+    forceMount?: true;
+}
+
+
+/* -------------------------------------------------------------------------------------------------
+ * Overlay
+ * -----------------------------------------------------------------------------------------------*/
+export const Overlay: React.ForwardRefExoticComponent<DialogOverlayProps & React.RefAttributes<HTMLDivElement>>;
+
+interface DialogOverlayProps extends DialogOverlayImplProps {
+  /**
+   * Used to force mounting when more control is needed. Useful when
+   * controlling animation with React animation libraries.
+   */
+  forceMount?: true;
+}
+
+interface DialogOverlayImplProps extends PrimitiveDivProps {
+}
+
+
+/* -------------------------------------------------------------------------------------------------
+ * Content
+ * -----------------------------------------------------------------------------------------------*/
+export const Content: React.ForwardRefExoticComponent<DialogContentProps & React.RefAttributes<HTMLDivElement>>;
+
+interface DialogContentProps extends DialogContentTypeProps {
+  /**
+   * Used to force mounting when more control is needed. Useful when
+   * controlling animation with React animation libraries.
+   */
+  forceMount?: true;
+}
+
+interface DialogContentTypeProps extends Omit<DialogContentImplProps, 'trapFocus' | 'disableOutsidePointerEvents'> {
+}
+
 interface DialogContentImplProps extends Omit<DismissableLayerProps, 'onDismiss'> {
     /**
      * When `true`, focus cannot escape the `Content` via keyboard,
@@ -37,67 +107,31 @@ interface DialogContentImplProps extends Omit<DismissableLayerProps, 'onDismiss'
     onCloseAutoFocus?: FocusScopeProps['onUnmountAutoFocus'];
 }
 
-interface DialogContentTypeProps extends Omit<DialogContentImplProps, 'trapFocus' | 'disableOutsidePointerEvents'> {
+type DismissableLayerProps = ComponentPropsWithoutRef<typeof DismissableLayer>;
+type FocusScopeProps = ComponentPropsWithoutRef<typeof FocusScope>;
+
+
+/* -------------------------------------------------------------------------------------------------
+ * Title
+ * -----------------------------------------------------------------------------------------------*/
+export const Title: React.ForwardRefExoticComponent<DialogTitleProps & React.RefAttributes<HTMLHeadingElement>>;
+
+interface DialogTitleProps extends PrimitiveHeading2Props {
 }
-interface DialogContentProps extends DialogContentTypeProps {
-  /**
-   * Used to force mounting when more control is needed. Useful when
-   * controlling animation with React animation libraries.
-   */
-  forceMount?: true;
-}
-
-export const Content: React.ForwardRefExoticComponent<
-  DialogContentProps & React.RefAttributes<HTMLDivElement>
->;
 
 
-
-type PrimitiveParagraphProps = ComponentPropsWithoutRef<PrimitiveForwardRefComponent<"p">>;
+/* -------------------------------------------------------------------------------------------------
+ * Description
+ * -----------------------------------------------------------------------------------------------*/
+export const Description: React.ForwardRefExoticComponent<DialogDescriptionProps & React.RefAttributes<HTMLParagraphElement>>;
 
 interface DialogDescriptionProps extends PrimitiveParagraphProps {
 }
-export const Description: React.ForwardRefExoticComponent<
-  DialogDescriptionProps & React.RefAttributes<HTMLParagraphElement>
->;
 
 
-
-export interface DialogPortalProps {
-  // I add this, and cannot understand why the original type-definition omits the 'className' prop. (Nikogoli)
-  class?: string | React.JSX.SignalLike<string | undefined> | undefined;
-  children?: VNode | Array<VNode>;
-  /**
-   * Specify a container element to portal the content into.
-   */
-  container?: PortalProps['container'];
-  /**
-   * Used to force mounting when more control is needed. Useful when
-   * controlling animation with React animation libraries.
-   */
-  forceMount?: true;
+/* -------------------------------------------------------------------------------------------------
+ * Close
+ * -----------------------------------------------------------------------------------------------*/
+export const Close: React.ForwardRefExoticComponent<DialogCloseProps & React.RefAttributes<HTMLButtonElement>>;
+interface DialogCloseProps extends PrimitiveButtonProps {
 }
-
-
-interface DialogOverlayImplProps extends PrimitiveDivProps {
-}
-interface DialogOverlayProps extends DialogOverlayImplProps {
-  /**
-   * Used to force mounting when more control is needed. Useful when
-   * controlling animation with React animation libraries.
-   */
-  forceMount?: true;
-}
-
-export const Overlay: React.ForwardRefExoticComponent<
-  DialogOverlayProps & React.RefAttributes<HTMLDivElement>
->;
-
-
-
-type PrimitiveHeading2Props = ComponentPropsWithoutRef<PrimitiveForwardRefComponent<"h2">>;
-interface DialogTitleProps extends PrimitiveHeading2Props {
-}
-export const Title: React.ForwardRefExoticComponent<
-  DialogTitleProps & React.RefAttributes<HTMLHeadingElement>
->;
