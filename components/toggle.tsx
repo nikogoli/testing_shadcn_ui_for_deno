@@ -1,11 +1,12 @@
 // @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
 import * as React from '../modules/esm.sh/preact@10.19.6/compat.js'
+// @deno-types="../modules/lib/components/toggle.d.ts"
 import * as TogglePrimitive from '../modules/esm.sh/v132/_@radix-ui/react-toggle@1.0.3.js'
-import { VariantProps, cva } from '../modules/esm.sh/class-variance-authority@0.7.0.js'
+import * as ToggleTypes from "../modules/lib/components/toggle.d.ts"
 
+import { VariantProps, cva } from '../modules/esm.sh/class-variance-authority@0.7.0.js'
 import { cn } from '../modules/lib/utils.ts'
 import { ElementRef, ComponentPropsWithoutRef } from "../modules/lib/type-utils.ts"
-import * as AltTogglePrimitive from "../modules/lib/components/toggle.d.ts"
 
 
 const Variants = {
@@ -38,8 +39,8 @@ const classnamesByVariants = cva(
 
 
 const Toggle = React.forwardRef<
-  ElementRef<typeof AltTogglePrimitive.Root>,
-  ComponentPropsWithoutRef<typeof AltTogglePrimitive.Root> & VariantProps<typeof classnamesByVariants>
+  ElementRef<typeof ToggleTypes.Root>,
+  ComponentPropsWithoutRef<typeof ToggleTypes.Root> & VariantProps<typeof classnamesByVariants>
 >(({ class:className, variant, size, ...props }, ref) => (
   <TogglePrimitive.Root
     ref={ref}
@@ -50,4 +51,7 @@ const Toggle = React.forwardRef<
 Toggle.displayName = TogglePrimitive.Root.displayName
 
 
-export { Toggle, Variants as toggleVariants }
+export {
+  Toggle,
+  Variants as toggleVariants
+}
