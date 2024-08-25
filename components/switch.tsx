@@ -1,15 +1,16 @@
 // @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
 import * as React from '../modules/esm.sh/preact@10.19.6/compat.js'
+// @deno-types="../modules/lib/components/switch.d.ts"
 import * as SwitchPrimitives from '../modules/esm.sh/_@radix-ui/react-switch@1.0.3.js'
-import * as AltSwitchPrimitives from "../modules/lib/components/switch.d.ts"
+import * as SwitchTypes from "../modules/lib/components/switch.d.ts"
 
 import { cn } from '../modules/lib/utils.ts'
 import { ElementRef, ComponentPropsWithoutRef } from "../modules/lib/type-utils.ts"
 
 
 const Switch = React.forwardRef<
-  ElementRef<typeof AltSwitchPrimitives.Root>,
-  ComponentPropsWithoutRef<typeof AltSwitchPrimitives.Root>
+  ElementRef<typeof SwitchTypes.Root>,
+  ComponentPropsWithoutRef<typeof SwitchTypes.Root>
 >(({ class:className, ...props }, ref) => (
   <SwitchPrimitives.Root
     className={cn(
