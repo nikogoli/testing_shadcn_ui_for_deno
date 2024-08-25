@@ -1,12 +1,12 @@
-import { PrimitiveForwardRefComponent, ComponentPropsWithoutRef } from "./type-utils.ts"
-
-/**
- * Following type-definitions are based on "https://esm.sh/v132/@radix-ui/react-focus-scope@1.0.4/X-YS9AdHlwZXMvcmVhY3Q6cHJlYWN0L2NvbXBhdCxyZWFjdDpwcmVhY3QvY29tcGF0CmUvKg/dist/index.d.ts"
-*/ 
+import { PrimitiveDivProps } from "./type-utils-Primitive.d.ts"
 
 
-type PrimitiveDivProps = ComponentPropsWithoutRef<PrimitiveForwardRefComponent<"div">>;
-export interface FocusScopeProps extends PrimitiveDivProps {
+/* -------------------------------------------------------------------------------------------------
+ * Root
+ * -----------------------------------------------------------------------------------------------*/
+export const Root: React.ForwardRefExoticComponent<FocusScopeProps & React.RefAttributes<HTMLDivElement>>;
+
+interface FocusScopeProps extends PrimitiveDivProps {
     /**
      * When `true`, tabbing from last item will focus first tabbable
      * and shift+tab from first item will focus last tababble.
@@ -30,7 +30,3 @@ export interface FocusScopeProps extends PrimitiveDivProps {
      */
     onUnmountAutoFocus?: (event: Event) => void;
 }
-
-export const FocusScope: React.ForwardRefExoticComponent<
-    FocusScopeProps & React.RefAttributes<HTMLDivElement>
->;
