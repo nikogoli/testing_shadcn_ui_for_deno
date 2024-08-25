@@ -1,79 +1,173 @@
 // @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
 import * as React from '../../../modules/esm.sh/preact@10.19.6/compat.js'
 import * as AltMenuPrimitive from "../type-utils-MenuPrimitve.d.ts"
-import { PrimitiveForwardRefComponent, ComponentPropsWithoutRef } from "../type-utils.ts"
+import { ComponentPropsWithoutRef } from "../type-utils.ts"
+
+import { PrimitiveButtonProps } from "../type-utils-Primitive.d.ts"
 
 
-/**
- * Following type-definitions are based on "https://esm.sh/v132/@radix-ui/react-dropdown-menu@2.0.6/X-YS9AdHlwZXMvcmVhY3Q6cHJlYWN0L2NvbXBhdCxyZWFjdDpwcmVhY3QvY29tcGF0CmUvKg/dist/index.d.mts"
- */ 
+/* -------------------------------------------------------------------------------------------------
+ * Root
+ * -----------------------------------------------------------------------------------------------*/
+export const Root: React.FC<DropdownMenuProps>;
 
-
-type MenuCheckboxItemProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.CheckboxItem>;
-interface DropdownMenuCheckboxItemProps extends MenuCheckboxItemProps {
+interface DropdownMenuProps {
+    children?: React.ReactNode;
+    dir?: 'ltr' | 'rtl';
+    open?: boolean;
+    defaultOpen?: boolean;
+    onOpenChange?(open: boolean): void;
+    modal?: boolean;
 }
-export const CheckboxItem: React.ForwardRefExoticComponent<
-    DropdownMenuCheckboxItemProps & React.RefAttributes<HTMLDivElement>
->;
 
-type MenuContentProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.Content>;
+
+/* -------------------------------------------------------------------------------------------------
+ * Trigger
+ * -----------------------------------------------------------------------------------------------*/
+export const Trigger: React.ForwardRefExoticComponent<DropdownMenuTriggerProps & React.RefAttributes<HTMLButtonElement>>;
+
+interface DropdownMenuTriggerProps extends PrimitiveButtonProps {
+}
+
+
+/* -------------------------------------------------------------------------------------------------
+ * Portal
+ * -----------------------------------------------------------------------------------------------*/
+export const Portal: React.FC<DropdownMenuPortalProps>;
+
+interface DropdownMenuPortalProps extends MenuPortalProps {
+}
+type MenuPortalProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.Portal>;
+
+
+/* -------------------------------------------------------------------------------------------------
+ * Content
+ * -----------------------------------------------------------------------------------------------*/
+export const Content: React.ForwardRefExoticComponent<DropdownMenuContentProps & React.RefAttributes<HTMLDivElement>>;
+
 interface DropdownMenuContentProps extends Omit<MenuContentProps, 'onEntryFocus'> {
 }
-export const Content: React.ForwardRefExoticComponent<
-    DropdownMenuContentProps & React.RefAttributes<HTMLDivElement>
->;
+type MenuContentProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.Content>;
 
 
+/* -------------------------------------------------------------------------------------------------
+ * Group
+ * -----------------------------------------------------------------------------------------------*/
+export const Group: React.ForwardRefExoticComponent<DropdownMenuGroupProps & React.RefAttributes<HTMLDivElement>>;
 
-
-type MenuSubContentProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.SubContent>;
-interface DropdownMenuSubContentProps extends MenuSubContentProps {
+interface DropdownMenuGroupProps extends MenuGroupProps {
 }
-export const SubContent: React.ForwardRefExoticComponent<
-    DropdownMenuSubContentProps & React.RefAttributes<HTMLDivElement>
->;
+type MenuGroupProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.Group>;
 
 
+/* -------------------------------------------------------------------------------------------------
+ * Label
+ * -----------------------------------------------------------------------------------------------*/
+export const Label: React.ForwardRefExoticComponent<DropdownMenuLabelProps & React.RefAttributes<HTMLDivElement>>;
 
-type MenuItemProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.Item>;
-interface DropdownMenuItemProps extends MenuItemProps {
-}
-export const Item: React.ForwardRefExoticComponent<
-    DropdownMenuItemProps & React.RefAttributes<HTMLDivElement>
->;
-
-
-
-type MenuLabelProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.Label>;
 interface DropdownMenuLabelProps extends MenuLabelProps {
 }
-export const Label: React.ForwardRefExoticComponent<
-    DropdownMenuLabelProps & React.RefAttributes<HTMLDivElement>
->;
+type MenuLabelProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.Label>;
 
 
-type MenuRadioItemProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.RadioItem>;
+/* -------------------------------------------------------------------------------------------------
+ * Item
+ * -----------------------------------------------------------------------------------------------*/
+export const Item: React.ForwardRefExoticComponent<DropdownMenuItemProps & React.RefAttributes<HTMLDivElement>>;
+
+interface DropdownMenuItemProps extends MenuItemProps {
+}
+type MenuItemProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.Item>;
+
+
+/* -------------------------------------------------------------------------------------------------
+ * CheckboxItem
+ * -----------------------------------------------------------------------------------------------*/
+export const CheckboxItem: React.ForwardRefExoticComponent<DropdownMenuCheckboxItemProps & React.RefAttributes<HTMLDivElement>>;
+
+interface DropdownMenuCheckboxItemProps extends MenuCheckboxItemProps {
+}
+type MenuCheckboxItemProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.CheckboxItem>;
+
+
+/* -------------------------------------------------------------------------------------------------
+ * RadioGroup
+ * -----------------------------------------------------------------------------------------------*/
+export const RadioGroup: React.ForwardRefExoticComponent<DropdownMenuRadioGroupProps & React.RefAttributes<HTMLDivElement>>;
+
+interface DropdownMenuRadioGroupProps extends MenuRadioGroupProps {
+}
+type MenuRadioGroupProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.RadioGroup>;
+
+
+/* -------------------------------------------------------------------------------------------------
+ * RadioItem
+ * -----------------------------------------------------------------------------------------------*/
+export const RadioItem: React.ForwardRefExoticComponent<DropdownMenuRadioItemProps & React.RefAttributes<HTMLDivElement>>;
+
 interface DropdownMenuRadioItemProps extends MenuRadioItemProps {
 }
-export const RadioItem: React.ForwardRefExoticComponent<
-    DropdownMenuRadioItemProps & React.RefAttributes<HTMLDivElement>
->;
+type MenuRadioItemProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.RadioItem>;
 
 
+/* -------------------------------------------------------------------------------------------------
+ * ItemIndicator
+ * -----------------------------------------------------------------------------------------------*/
+export const ItemIndicator: React.ForwardRefExoticComponent<DropdownMenuItemIndicatorProps & React.RefAttributes<HTMLSpanElement>>;
 
-type MenuSeparatorProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.Separator>;
+interface DropdownMenuItemIndicatorProps extends MenuItemIndicatorProps {
+}
+type MenuItemIndicatorProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.ItemIndicator>;
+
+
+/* -------------------------------------------------------------------------------------------------
+ * Separator
+ * -----------------------------------------------------------------------------------------------*/
+export const Separator: React.ForwardRefExoticComponent<DropdownMenuSeparatorProps & React.RefAttributes<HTMLDivElement>>;
+
 interface DropdownMenuSeparatorProps extends MenuSeparatorProps {
 }
-export const Separator: React.ForwardRefExoticComponent<
-    DropdownMenuSeparatorProps & React.RefAttributes<HTMLDivElement>
->;
+type MenuSeparatorProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.Separator>;
 
 
+/* -------------------------------------------------------------------------------------------------
+ * Arrow
+ * -----------------------------------------------------------------------------------------------*/
+export const Arrow: React.ForwardRefExoticComponent<DropdownMenuArrowProps & React.RefAttributes<SVGSVGElement>>;
+
+interface DropdownMenuArrowProps extends MenuArrowProps {
+}
+type MenuArrowProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.Arrow>;
 
 
-type MenuSubTriggerProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.SubTrigger>;
+/* -------------------------------------------------------------------------------------------------
+ * Sub
+ * -----------------------------------------------------------------------------------------------*/
+export const Sub: React.FC<DropdownMenuSubProps>;
+
+interface DropdownMenuSubProps {
+    children?: React.ReactNode;
+    open?: boolean;
+    defaultOpen?: boolean;
+    onOpenChange?(open: boolean): void;
+}
+
+
+/* -------------------------------------------------------------------------------------------------
+ * SubTrigger
+ * -----------------------------------------------------------------------------------------------*/
+export const SubTrigger: React.ForwardRefExoticComponent<DropdownMenuSubTriggerProps & React.RefAttributes<HTMLDivElement>>;
+
 interface DropdownMenuSubTriggerProps extends MenuSubTriggerProps {
 }
-export const SubTrigger: React.ForwardRefExoticComponent<
-    DropdownMenuSubTriggerProps & React.RefAttributes<HTMLDivElement>
->;
+type MenuSubTriggerProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.SubTrigger>;
+
+
+/* -------------------------------------------------------------------------------------------------
+ * SubContent
+ * -----------------------------------------------------------------------------------------------*/
+export const SubContent: React.ForwardRefExoticComponent<DropdownMenuSubContentProps & React.RefAttributes<HTMLDivElement>>;
+
+interface DropdownMenuSubContentProps extends MenuSubContentProps {
+}
+type MenuSubContentProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.SubContent>;

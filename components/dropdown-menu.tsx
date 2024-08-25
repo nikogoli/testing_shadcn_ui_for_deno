@@ -1,7 +1,8 @@
 // @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
 import * as React from '../modules/esm.sh/preact@10.19.6/compat.js'
+// @deno-types="../modules/lib/components/dropdown-menu.d.ts"
 import * as DropdownMenuPrimitive from '../modules/esm.sh/v132/_@radix-ui/react-dropdown-menu@2.0.6.js'
-import * as AltDropdownMenuPrimitive from "../modules/lib/components/dropdown-menu.d.ts"
+import * as DropdownMenuTypes from "../modules/lib/components/dropdown-menu.d.ts"
 
 import IconChevronRight from "https://deno.land/x/tabler_icons_tsx@0.0.5/tsx/chevron-right.tsx"
 import IconCheck from "https://deno.land/x/tabler_icons_tsx@0.0.5/tsx/check.tsx"
@@ -9,6 +10,7 @@ import IconCircleFilled from "https://deno.land/x/tabler_icons_tsx@0.0.5/tsx/cir
 
 import { cn } from '../modules/lib/utils.ts'
 import { ElementRef, ComponentPropsWithoutRef } from "../modules/lib/type-utils.ts"
+
 
 const DropdownMenu = DropdownMenuPrimitive.Root
 
@@ -29,8 +31,8 @@ const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup
 
 
 const DropdownMenuSubTrigger = React.forwardRef<
-  ElementRef<typeof AltDropdownMenuPrimitive.SubTrigger>,
-  ComponentPropsWithoutRef<typeof AltDropdownMenuPrimitive.SubTrigger> & {
+  ElementRef<typeof DropdownMenuTypes.SubTrigger>,
+  ComponentPropsWithoutRef<typeof DropdownMenuTypes.SubTrigger> & {
     inset?: boolean
   }
 >(({ class:className, inset, children, ...props }, ref) => (
@@ -38,7 +40,7 @@ const DropdownMenuSubTrigger = React.forwardRef<
     ref={ref}
     className={cn(
       `flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none
-        focus:bg-accent data-[state=open]:bg-accent`,
+       focus:bg-accent data-[state=open]:bg-accent`,
       inset && 'pl-8',
       className
     )}
@@ -52,17 +54,17 @@ DropdownMenuSubTrigger.displayName = DropdownMenuPrimitive.SubTrigger.displayNam
 
 
 const DropdownMenuSubContent = React.forwardRef<
-  ElementRef<typeof AltDropdownMenuPrimitive.SubContent>,
-  ComponentPropsWithoutRef<typeof AltDropdownMenuPrimitive.SubContent>
+  ElementRef<typeof DropdownMenuTypes.SubContent>,
+  ComponentPropsWithoutRef<typeof DropdownMenuTypes.SubContent>
 >(({ class:className, ...props }, ref) => (
   <DropdownMenuPrimitive.SubContent
     ref={ref}
     className={cn(
       `z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-lg
-        data-[state=open]:data-[side=left]:animate-slidein-fromright
-        data-[state=open]:data-[side=right]:animate-slidein-fromleft
-        data-[state=open]:data-[side=top]:animate-slidein-frombottom
-        data-[state=open]:data-[side=bottom]:animate-slidein-fromtop
+        data-[state=open]:data-[side=left]:animate-slidein-from-right-50
+        data-[state=open]:data-[side=right]:animate-slidein-from-left-50
+        data-[state=open]:data-[side=top]:animate-slidein-from-bottom-50
+        data-[state=open]:data-[side=bottom]:animate-slidein-from-top-50
         data-[state=closed]:animate-zoomout-95`,
       className
     )}
@@ -73,8 +75,8 @@ DropdownMenuSubContent.displayName = DropdownMenuPrimitive.SubContent.displayNam
 
 
 const DropdownMenuContent = React.forwardRef<
-  ElementRef<typeof AltDropdownMenuPrimitive.Content>,
-  ComponentPropsWithoutRef<typeof AltDropdownMenuPrimitive.Content>
+  ElementRef<typeof DropdownMenuTypes.Content>,
+  ComponentPropsWithoutRef<typeof DropdownMenuTypes.Content>
 >(({ class:className, sideOffset = 4, ...props }, ref) => (
   <DropdownMenuPrimitive.Portal>
     <DropdownMenuPrimitive.Content
@@ -82,10 +84,10 @@ const DropdownMenuContent = React.forwardRef<
       sideOffset={sideOffset}
       className={cn(
         `z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md
-         data-[state=open]:data-[side=left]:animate-slidein-fromright
-         data-[state=open]:data-[side=right]:animate-slidein-fromleft
-         data-[state=open]:data-[side=top]:animate-slidein-frombottom
-         data-[state=open]:data-[side=bottom]:animate-slidein-fromtop
+         data-[state=open]:data-[side=left]:animate-slidein-from-right-50
+         data-[state=open]:data-[side=right]:animate-slidein-from-left-50
+         data-[state=open]:data-[side=top]:animate-slidein-from-bottom-50
+         data-[state=open]:data-[side=bottom]:animate-slidein-from-top-50
          data-[state=closed]:animate-zoomout-95`,
         className
       )}
@@ -97,8 +99,8 @@ DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName
 
 
 const DropdownMenuItem = React.forwardRef<
-  ElementRef<typeof AltDropdownMenuPrimitive.Item>,
-  ComponentPropsWithoutRef<typeof AltDropdownMenuPrimitive.Item> & {
+  ElementRef<typeof DropdownMenuTypes.Item>,
+  ComponentPropsWithoutRef<typeof DropdownMenuTypes.Item> & {
     inset?: boolean
   }
 >(({ class:className, inset, ...props }, ref) => (
@@ -118,8 +120,8 @@ DropdownMenuItem.displayName = DropdownMenuPrimitive.Item.displayName
 
 
 const DropdownMenuCheckboxItem = React.forwardRef<
-  ElementRef<typeof AltDropdownMenuPrimitive.CheckboxItem>,
-  ComponentPropsWithoutRef<typeof AltDropdownMenuPrimitive.CheckboxItem>
+  ElementRef<typeof DropdownMenuTypes.CheckboxItem>,
+  ComponentPropsWithoutRef<typeof DropdownMenuTypes.CheckboxItem>
 >(({ class:className, children, checked, ...props }, ref) => (
   <DropdownMenuPrimitive.CheckboxItem
     ref={ref}
@@ -144,8 +146,8 @@ DropdownMenuCheckboxItem.displayName = DropdownMenuPrimitive.CheckboxItem.displa
 
 
 const DropdownMenuRadioItem = React.forwardRef<
-  ElementRef<typeof AltDropdownMenuPrimitive.RadioItem>,
-  ComponentPropsWithoutRef<typeof AltDropdownMenuPrimitive.RadioItem>
+  ElementRef<typeof DropdownMenuTypes.RadioItem>,
+  ComponentPropsWithoutRef<typeof DropdownMenuTypes.RadioItem>
 >(({ class:className, children, ...props }, ref) => (
   <DropdownMenuPrimitive.RadioItem
     ref={ref}
@@ -169,8 +171,8 @@ DropdownMenuRadioItem.displayName = DropdownMenuPrimitive.RadioItem.displayName
 
 
 const DropdownMenuLabel = React.forwardRef<
-  ElementRef<typeof AltDropdownMenuPrimitive.Label>,
-  ComponentPropsWithoutRef<typeof AltDropdownMenuPrimitive.Label> & {
+  ElementRef<typeof DropdownMenuTypes.Label>,
+  ComponentPropsWithoutRef<typeof DropdownMenuTypes.Label> & {
     inset?: boolean
   }
 >(({ class:className, inset, ...props }, ref) => (
@@ -184,8 +186,8 @@ DropdownMenuLabel.displayName = DropdownMenuPrimitive.Label.displayName
 
 
 const DropdownMenuSeparator = React.forwardRef<
-  ElementRef<typeof AltDropdownMenuPrimitive.Separator>,
-  ComponentPropsWithoutRef<typeof AltDropdownMenuPrimitive.Separator>
+  ElementRef<typeof DropdownMenuTypes.Separator>,
+  ComponentPropsWithoutRef<typeof DropdownMenuTypes.Separator>
 >(({ class:className, ...props }, ref) => (
   <DropdownMenuPrimitive.Separator
     ref={ref}
