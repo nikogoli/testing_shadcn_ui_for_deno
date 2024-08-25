@@ -1,8 +1,8 @@
 // @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
 import * as React from '../modules/esm.sh/preact@10.19.6/compat.js'
+// @deno-types="../modules/lib/components/context-menu.d.ts"
 import * as ContextMenuPrimitive from '../modules/esm.sh/v132/_@radix-ui/react-context-menu@2.1.5.js'
-import * as AltContextMenuPrimitive from "../modules/lib/components/context-menu.d.ts"
-import { RadioItem } from "../modules/lib/type-utils-MenuPrimitve.d.ts"
+import * as ContextMenuTypes from "../modules/lib/components/context-menu.d.ts"
 
 import IconChevronRight from "https://deno.land/x/tabler_icons_tsx@0.0.7/tsx/chevron-right.tsx"
 import IconCheck from "https://deno.land/x/tabler_icons_tsx@0.0.7/tsx/check.tsx"
@@ -12,27 +12,27 @@ import { cn } from '../modules/lib/utils.ts'
 import { ElementRef, ComponentPropsWithoutRef } from "../modules/lib/type-utils.ts"
 
 
-const ContextMenu: React.FC<ContextMenuPrimitive.ContextMenuProps> = ContextMenuPrimitive.Root
+const ContextMenu = ContextMenuPrimitive.Root
 
 
-const ContextMenuTrigger: typeof AltContextMenuPrimitive.Trigger = ContextMenuPrimitive.Trigger
+const ContextMenuTrigger = ContextMenuPrimitive.Trigger
 
 
-const ContextMenuGroup:typeof AltContextMenuPrimitive.Group = ContextMenuPrimitive.Group
+const ContextMenuGroup = ContextMenuPrimitive.Group
 
 
-const ContextMenuPortal:React.FC<ContextMenuPrimitive.ContextMenuPortalProps> = ContextMenuPrimitive.Portal
+const ContextMenuPortal = ContextMenuPrimitive.Portal
 
 
-const ContextMenuSub:React.FC<ContextMenuPrimitive.ContextMenuSubProps> = ContextMenuPrimitive.Sub
+const ContextMenuSub = ContextMenuPrimitive.Sub
 
 
-const ContextMenuRadioGroup: typeof RadioItem = ContextMenuPrimitive.RadioGroup
+const ContextMenuRadioGroup = ContextMenuPrimitive.RadioGroup
 
 
 const ContextMenuSubTrigger = React.forwardRef<
-  ElementRef<typeof AltContextMenuPrimitive.SubTrigger>,
-  ComponentPropsWithoutRef<typeof AltContextMenuPrimitive.SubTrigger> & {
+  ElementRef<typeof ContextMenuTypes.SubTrigger>,
+  ComponentPropsWithoutRef<typeof ContextMenuTypes.SubTrigger> & {
     inset?: boolean
   }
 >(({ class:className, inset, children, ...props }, ref) => (
@@ -56,17 +56,17 @@ ContextMenuSubTrigger.displayName = ContextMenuPrimitive.SubTrigger.displayName
 
 
 const ContextMenuSubContent = React.forwardRef<
-  ElementRef<typeof AltContextMenuPrimitive.SubContent>,
-  ComponentPropsWithoutRef<typeof AltContextMenuPrimitive.SubContent>
+  ElementRef<typeof ContextMenuTypes.SubContent>,
+  ComponentPropsWithoutRef<typeof ContextMenuTypes.SubContent>
 >(({ class:className, ...props }, ref) => (
   <ContextMenuPrimitive.SubContent
     ref={ref}
     className={cn(
       `z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md
-       data-[state=open]:data-[side=left]:animate-slidein-fromright
-       data-[state=open]:data-[side=right]:animate-slidein-fromleft
-       data-[state=open]:data-[side=top]:animate-slidein-frombottom
-       data-[state=open]:data-[side=bottom]:animate-slidein-fromtop
+       data-[state=open]:data-[side=left]:animate-slidein-from-right-50
+       data-[state=open]:data-[side=right]:animate-slidein-from-left-50
+       data-[state=open]:data-[side=top]:animate-slidein-from-bottom-50
+       data-[state=open]:data-[side=bottom]:animate-slidein-from-top-50
        data-[state=closed]:animate-zoomout-95`,
       className
     )}
@@ -77,18 +77,18 @@ ContextMenuSubContent.displayName = ContextMenuPrimitive.SubContent.displayName
 
 
 const ContextMenuContent = React.forwardRef<
-  ElementRef<typeof AltContextMenuPrimitive.Content>,
-  ComponentPropsWithoutRef<typeof AltContextMenuPrimitive.Content>
+  ElementRef<typeof ContextMenuTypes.Content>,
+  ComponentPropsWithoutRef<typeof ContextMenuTypes.Content>
 >(({ class:className, ...props }, ref) => (
   <ContextMenuPrimitive.Portal>
     <ContextMenuPrimitive.Content
       ref={ref}
       className={cn(
         `z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md
-         data-[state=open]:data-[side=left]:animate-slidein-fromright
-         data-[state=open]:data-[side=right]:animate-slidein-fromleft
-         data-[state=open]:data-[side=top]:animate-slidein-frombottom
-         data-[state=open]:data-[side=bottom]:animate-slidein-fromtop
+         data-[state=open]:data-[side=left]:animate-slidein-from-right-50
+         data-[state=open]:data-[side=right]:animate-slidein-from-left-50
+         data-[state=open]:data-[side=top]:animate-slidein-from-bottom-50
+         data-[state=open]:data-[side=bottom]:animate-slidein-from-top-50
          data-[state=closed]:animate-zoomout-95`,
         className
       )}
@@ -100,8 +100,8 @@ ContextMenuContent.displayName = ContextMenuPrimitive.Content.displayName
 
 
 const ContextMenuItem = React.forwardRef<
-  ElementRef<typeof AltContextMenuPrimitive.Item>,
-  ComponentPropsWithoutRef<typeof AltContextMenuPrimitive.Item> & {
+  ElementRef<typeof ContextMenuTypes.Item>,
+  ComponentPropsWithoutRef<typeof ContextMenuTypes.Item> & {
     inset?: boolean
   }
 >(({ class:className, inset, ...props }, ref) => (
@@ -121,8 +121,8 @@ ContextMenuItem.displayName = ContextMenuPrimitive.Item.displayName
 
 
 const ContextMenuCheckboxItem = React.forwardRef<
-  ElementRef<typeof AltContextMenuPrimitive.CheckboxItem>,
-  ComponentPropsWithoutRef<typeof AltContextMenuPrimitive.CheckboxItem>
+  ElementRef<typeof ContextMenuTypes.CheckboxItem>,
+  ComponentPropsWithoutRef<typeof ContextMenuTypes.CheckboxItem>
 >(({ class:className, children, checked, ...props }, ref) => (
   <ContextMenuPrimitive.CheckboxItem
     ref={ref}
@@ -147,8 +147,8 @@ ContextMenuCheckboxItem.displayName = ContextMenuPrimitive.CheckboxItem.displayN
 
 
 const ContextMenuRadioItem = React.forwardRef<
-  ElementRef<typeof AltContextMenuPrimitive.RadioItem>,
-  ComponentPropsWithoutRef<typeof AltContextMenuPrimitive.RadioItem>
+  ElementRef<typeof ContextMenuTypes.RadioItem>,
+  ComponentPropsWithoutRef<typeof ContextMenuTypes.RadioItem>
 >(({ class:className, children, ...props }, ref) => (
   <ContextMenuPrimitive.RadioItem
     ref={ref}
@@ -162,7 +162,7 @@ const ContextMenuRadioItem = React.forwardRef<
   >
     <span class="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
       <ContextMenuPrimitive.ItemIndicator>
-        <IconCircleFilled class="flex h-2 w-2 text-current" />
+        <IconCircleFilled class="h-2 w-2 text-current" />
       </ContextMenuPrimitive.ItemIndicator>
     </span>
     {children}
@@ -172,8 +172,8 @@ ContextMenuRadioItem.displayName = ContextMenuPrimitive.RadioItem.displayName
 
 
 const ContextMenuLabel = React.forwardRef<
-  ElementRef<typeof AltContextMenuPrimitive.Label>,
-  ComponentPropsWithoutRef<typeof AltContextMenuPrimitive.Label> & {
+  ElementRef<typeof ContextMenuTypes.Label>,
+  ComponentPropsWithoutRef<typeof ContextMenuTypes.Label> & {
     inset?: boolean
   }
 >(({ class:className, inset, ...props }, ref) => (
@@ -187,8 +187,8 @@ ContextMenuLabel.displayName = ContextMenuPrimitive.Label.displayName
 
 
 const ContextMenuSeparator = React.forwardRef<
-  ElementRef<typeof AltContextMenuPrimitive.Separator>,
-  ComponentPropsWithoutRef<typeof AltContextMenuPrimitive.Separator>
+  ElementRef<typeof ContextMenuTypes.Separator>,
+  ComponentPropsWithoutRef<typeof ContextMenuTypes.Separator>
 >(({ class:className, ...props }, ref) => (
   <ContextMenuPrimitive.Separator
     ref={ref}
@@ -198,8 +198,9 @@ const ContextMenuSeparator = React.forwardRef<
 ))
 ContextMenuSeparator.displayName = ContextMenuPrimitive.Separator.displayName
 
+
 const ContextMenuShortcut = ({ class:className, ...props }: React.HTMLAttributes<HTMLSpanElement>) => {
-  return <span className={cn('ml-auto text-xs tracking-widest text-muted-foreground', className)} {...props} />
+  return <span class={cn('ml-auto text-xs tracking-widest text-muted-foreground', className)} {...props} />
 }
 ContextMenuShortcut.displayName = 'ContextMenuShortcut'
 

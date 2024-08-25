@@ -1,109 +1,173 @@
 // @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
 import * as React from '../../esm.sh/preact@10.19.6/compat.js'
 import * as AltMenuPrimitive from "../type-utils-MenuPrimitve.d.ts"
-import { PrimitiveForwardRefComponent, ComponentPropsWithoutRef } from "../type-utils.ts"
+import { ComponentPropsWithoutRef } from "../type-utils.ts"
+
+import { PrimitiveSpanProps } from "../type-utils-Primitive.d.ts"
 
 
-/**
- * Following type-definitions are based on "https://esm.sh/v132/@radix-ui/react-context-menu@2.1.5/X-YS9AdHlwZXMvcmVhY3Q6cHJlYWN0L2NvbXBhdCxyZWFjdDpwcmVhY3QvY29tcGF0CmUvKg/dist/index.d.mts"
- */ 
+/* -------------------------------------------------------------------------------------------------
+ * Root
+ * -----------------------------------------------------------------------------------------------*/
+export const Root: React.FC<ContextMenuProps>;
+
+interface ContextMenuProps {
+    children?: React.ReactNode;
+    onOpenChange?(open: boolean): void;
+    dir?: 'ltr' | 'rtl';
+    modal?: boolean;
+}
 
 
-// -------- Trigger -------------
+/* -------------------------------------------------------------------------------------------------
+ * Trigger
+ * -----------------------------------------------------------------------------------------------*/
+export const Trigger: React.ForwardRefExoticComponent<ContextMenuTriggerProps & React.RefAttributes<HTMLSpanElement>>;
 
-type PrimitiveSpanProps = ComponentPropsWithoutRef<PrimitiveForwardRefComponent<"span">>
 interface ContextMenuTriggerProps extends PrimitiveSpanProps {
-  disabled?: boolean
+    disabled?: boolean;
 }
-export const Trigger: React.ForwardRefExoticComponent<ContextMenuTriggerProps & React.RefAttributes<HTMLSpanElement>>
 
 
-// -------- MenuGroup -------------
+/* -------------------------------------------------------------------------------------------------
+ * Trigger
+ * -----------------------------------------------------------------------------------------------*/
+export const Portal: React.FC<ContextMenuPortalProps>;
 
-type MenuGroupProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.Group>;
-interface ContextMenuGroupProps extends MenuGroupProps {
+type MenuPortalProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.Portal>;
+interface ContextMenuPortalProps extends MenuPortalProps {
 }
-export const Group: React.ForwardRefExoticComponent<ContextMenuGroupProps & React.RefAttributes<HTMLDivElement>>
 
 
-// -------- CheckboxItem: -------------
+/* -------------------------------------------------------------------------------------------------
+ * Content
+ * -----------------------------------------------------------------------------------------------*/
+export const Content: React.ForwardRefExoticComponent<ContextMenuContentProps & React.RefAttributes<HTMLDivElement>>;
 
-type MenuCheckboxItemProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.CheckboxItem>;
-interface ContextMenuCheckboxItemProps extends MenuCheckboxItemProps {
-}
-export const CheckboxItem: React.ForwardRefExoticComponent<
-    ContextMenuCheckboxItemProps & React.RefAttributes<HTMLDivElement>
->;
-
-
-// -------- Content -------------
-
-type MenuContentProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.Content>;
 interface ContextMenuContentProps extends Omit<MenuContentProps, 'onEntryFocus' | 'side' | 'sideOffset' | 'align'> {
 }
-
-export const Content: React.ForwardRefExoticComponent<
-    ContextMenuContentProps & React.RefAttributes<HTMLDivElement>
->;
+type MenuContentProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.Content>;
 
 
-// -------- SubContent -------------
+/* -------------------------------------------------------------------------------------------------
+ * Group
+ * -----------------------------------------------------------------------------------------------*/
+export const Group: React.ForwardRefExoticComponent<ContextMenuGroupProps & React.RefAttributes<HTMLDivElement>>;
 
-type MenuSubContentProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.SubContent>;
-interface ContextMenuSubContentProps extends MenuSubContentProps {
+interface ContextMenuGroupProps extends MenuGroupProps {
 }
-
-export const SubContent: React.ForwardRefExoticComponent<
-    ContextMenuSubContentProps & React.RefAttributes<HTMLDivElement>
->;
+type MenuGroupProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.Group>;
 
 
-// -------- Item -------------
+/* -------------------------------------------------------------------------------------------------
+ * Label
+ * -----------------------------------------------------------------------------------------------*/
+export const Label: React.ForwardRefExoticComponent<ContextMenuLabelProps & React.RefAttributes<HTMLDivElement>>;
 
-type MenuItemProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.Item>;
-interface ContextMenuItemProps extends MenuItemProps {
-}
-export const Item: React.ForwardRefExoticComponent<
-    ContextMenuItemProps & React.RefAttributes<HTMLDivElement>
->;
-
-
-// -------- Label -------------
-
-type MenuLabelProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.Label>;
 interface ContextMenuLabelProps extends MenuLabelProps {
 }
-export const Label: React.ForwardRefExoticComponent<
-    ContextMenuLabelProps & React.RefAttributes<HTMLDivElement>
->;
+type MenuLabelProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.Label>;
 
 
-// -------- RadioItem -------------
+/* -------------------------------------------------------------------------------------------------
+ * Item
+ * -----------------------------------------------------------------------------------------------*/
+export const Item: React.ForwardRefExoticComponent<ContextMenuItemProps & React.RefAttributes<HTMLDivElement>>;
 
-type MenuRadioItemProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.RadioItem>;
+interface ContextMenuItemProps extends MenuItemProps {
+}
+type MenuItemProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.Item>;
+
+
+/* -------------------------------------------------------------------------------------------------
+ * CheckboxItem
+ * -----------------------------------------------------------------------------------------------*/
+export const CheckboxItem: React.ForwardRefExoticComponent<ContextMenuCheckboxItemProps & React.RefAttributes<HTMLDivElement>>;
+
+interface ContextMenuCheckboxItemProps extends MenuCheckboxItemProps {
+}
+type MenuCheckboxItemProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.CheckboxItem>;
+
+
+/* -------------------------------------------------------------------------------------------------
+ * RadioGroup
+ * -----------------------------------------------------------------------------------------------*/
+export const RadioGroup: React.ForwardRefExoticComponent<ContextMenuRadioGroupProps & React.RefAttributes<HTMLDivElement>>;
+
+interface ContextMenuRadioGroupProps extends MenuRadioGroupProps {
+}
+type MenuRadioGroupProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.RadioGroup>;
+
+
+/* -------------------------------------------------------------------------------------------------
+ * RadioItem
+ * -----------------------------------------------------------------------------------------------*/
+export const RadioItem: React.ForwardRefExoticComponent<ContextMenuRadioItemProps & React.RefAttributes<HTMLDivElement>>;
+
 interface ContextMenuRadioItemProps extends MenuRadioItemProps {
 }
-export const RadioItem: React.ForwardRefExoticComponent<
-    ContextMenuRadioItemProps & React.RefAttributes<HTMLDivElement>
->;
+type MenuRadioItemProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.RadioItem>;
 
 
-// -------- SubTrigger -------------
+/* -------------------------------------------------------------------------------------------------
+ * ItemIndicator
+ * -----------------------------------------------------------------------------------------------*/
+export const ItemIndicator: React.ForwardRefExoticComponent<ContextMenuItemIndicatorProps & React.RefAttributes<HTMLSpanElement>>;
 
-type MenuSubTriggerProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.SubTrigger>;
-interface ContextMenuSubTriggerProps extends MenuSubTriggerProps {
+interface ContextMenuItemIndicatorProps extends MenuItemIndicatorProps {
 }
-
-export const SubTrigger: React.ForwardRefExoticComponent<
-  ContextMenuSubTriggerProps & React.RefAttributes<HTMLDivElement>
->;
+type MenuItemIndicatorProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.ItemIndicator>;
 
 
-// -------- Separator -------------
+/* -------------------------------------------------------------------------------------------------
+ * Separator
+ * -----------------------------------------------------------------------------------------------*/
+export const Separator: React.ForwardRefExoticComponent<ContextMenuSeparatorProps & React.RefAttributes<HTMLDivElement>>;
 
-type MenuSeparatorProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.Separator>;
 interface ContextMenuSeparatorProps extends MenuSeparatorProps {
 }
-export const Separator: React.ForwardRefExoticComponent<
-    ContextMenuSeparatorProps & React.RefAttributes<HTMLDivElement>
->;
+type MenuSeparatorProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.Separator>;
+
+
+/* -------------------------------------------------------------------------------------------------
+ * Arrow
+ * -----------------------------------------------------------------------------------------------*/
+export const Arrow: React.ForwardRefExoticComponent<ContextMenuArrowProps & React.RefAttributes<SVGSVGElement>>;
+
+interface ContextMenuArrowProps extends MenuArrowProps {
+}
+type MenuArrowProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.Arrow>;
+
+
+/* -------------------------------------------------------------------------------------------------
+ * Arrow
+ * -----------------------------------------------------------------------------------------------*/
+export const Sub: React.FC<ContextMenuSubProps>;
+
+interface ContextMenuSubProps {
+    children?: React.ReactNode;
+    open?: boolean;
+    defaultOpen?: boolean;
+    onOpenChange?(open: boolean): void;
+}
+
+
+/* -------------------------------------------------------------------------------------------------
+ * SubTrigger
+ * -----------------------------------------------------------------------------------------------*/
+export const SubTrigger: React.ForwardRefExoticComponent<ContextMenuSubTriggerProps & React.RefAttributes<HTMLDivElement>>;
+
+interface ContextMenuSubTriggerProps extends MenuSubTriggerProps {
+}
+type MenuSubTriggerProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.SubTrigger>;
+
+
+
+/* -------------------------------------------------------------------------------------------------
+ * SubTrigger
+ * -----------------------------------------------------------------------------------------------*/
+export const SubContent: React.ForwardRefExoticComponent<ContextMenuSubContentProps & React.RefAttributes<HTMLDivElement>>;
+
+interface ContextMenuSubContentProps extends MenuSubContentProps {
+}
+type MenuSubContentProps = ComponentPropsWithoutRef<typeof AltMenuPrimitive.SubContent>;
