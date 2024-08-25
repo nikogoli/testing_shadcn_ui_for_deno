@@ -32,7 +32,7 @@ const classnamesByVariants = cva(
   data-[swipe=cancel]:translate-x-0 data-[swipe=end]:translate-x-[var(--radix-toast-swipe-end-x)]
   data-[state=open]:sm:animate-slidein-from-bottom-full
   data-[state=open]:animate-slidein-from-top-full
-  data-[state=closed]:animate-slideout-to-right-full
+  data-[state=closed]:animate-slideout-to-right-full data-[state=closed]:![animation-duration:.3s]
   data-[swipe=end]:animate-out`,
   { ... Variants}
 )
