@@ -1,31 +1,14 @@
-import { PrimitiveForwardRefComponent, ComponentPropsWithoutRef } from "./type-utils.ts"
-
-/**
- * Following type-definitions are based on "https://esm.sh/v132/@radix-ui/react-roving-focus@1.0.4/X-YS9AdHlwZXMvcmVhY3Q6cHJlYWN0L2NvbXBhdCxyZWFjdDpwcmVhY3QvY29tcGF0CmUvKg/dist/index.d.mts"
-*/ 
+import { PrimitiveDivProps, PrimitiveSpanProps } from "./type-utils-Primitive.d.ts"
 
 
+/* -------------------------------------------------------------------------------------------------
+ * Root
+ * -----------------------------------------------------------------------------------------------*/
+export const Root: React.ForwardRefExoticComponent<RovingFocusGroupProps & React.RefAttributes<HTMLDivElement>>;
 
-type Orientation = React.HTMLAttributes<HTMLElement>['aria-orientation'];
-type Direction = 'ltr' | 'rtl';
-interface RovingFocusGroupOptions {
-    /**
-     * The orientation of the group.
-     * Mainly so arrow navigation is done accordingly (left & right vs. up & down)
-     */
-    orientation?: Orientation;
-    /**
-     * The direction of navigation between items.
-     */
-    dir?: Direction;
-    /**
-     * Whether keyboard navigation should loop around
-     * @defaultValue false
-     */
-    loop?: boolean;
+interface RovingFocusGroupProps extends RovingFocusGroupImplProps {
 }
 
-type PrimitiveDivProps = ComponentPropsWithoutRef<PrimitiveForwardRefComponent<"div">>;
 interface RovingFocusGroupImplProps extends Omit<PrimitiveDivProps, 'dir'|'loop'>, RovingFocusGroupOptions {
     currentTabStopId?: string | null;
     defaultCurrentTabStopId?: string;
@@ -33,10 +16,31 @@ interface RovingFocusGroupImplProps extends Omit<PrimitiveDivProps, 'dir'|'loop'
     onEntryFocus?: (event: Event) => void;
 }
 
-// deno-lint-ignore no-empty-interface
-interface RovingFocusGroupProps extends RovingFocusGroupImplProps {
+interface RovingFocusGroupOptions {
+    /**
+     * The orientation of the group.
+     * Mainly so arrow navigation is done accordingly (left & right vs. up & down)
+     */
+    orientation?: React.HTMLAttributes<HTMLElement>['aria-orientation'];
+    /**
+     * The direction of navigation between items.
+     */
+    dir?: 'ltr' | 'rtl';
+    /**
+     * Whether keyboard navigation should loop around
+     * @defaultValue false
+     */
+    loop?: boolean;
 }
 
-export const Root: React.ForwardRefExoticComponent<
-    RovingFocusGroupProps & React.RefAttributes<HTMLDivElement>
->;
+
+/* -------------------------------------------------------------------------------------------------
+ * Root
+ * -----------------------------------------------------------------------------------------------*/
+export const Item: React.ForwardRefExoticComponent<RovingFocusItemProps & React.RefAttributes<HTMLSpanElement>>;
+
+interface RovingFocusItemProps extends PrimitiveSpanProps {
+    tabStopId?: string;
+    focusable?: boolean;
+    active?: boolean;
+}
