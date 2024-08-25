@@ -1,15 +1,16 @@
 // @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
 import * as React from '../modules/esm.sh/preact@10.19.6/compat.js'
+// @deno-types="../modules/lib/components/slider.d.ts"
 import * as SliderPrimitive from '../modules/esm.sh/_@radix-ui/react-slider@1.1.2.js'
-import * as AltSliderPrimitive from "../modules/lib/components/slider.d.ts"
+import * as SliderTypes from "../modules/lib/components/slider.d.ts"
 
 import { cn } from '../modules/lib/utils.ts'
 import { ElementRef, ComponentPropsWithoutRef } from "../modules/lib/type-utils.ts"
 
 
 const Slider = React.forwardRef<
-  ElementRef<typeof AltSliderPrimitive.Root>,
-  ComponentPropsWithoutRef<typeof AltSliderPrimitive.Root>
+  ElementRef<typeof SliderTypes.Root>,
+  ComponentPropsWithoutRef<typeof SliderTypes.Root>
 >(({ class:className, ...props }, ref) => (
   <SliderPrimitive.Root
     ref={ref}
