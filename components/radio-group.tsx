@@ -1,7 +1,9 @@
 // @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
 import * as React from '../modules/esm.sh/preact@10.19.6/compat.js'
+// @deno-types="../modules/lib/components/radio-group.d.ts"
 import * as RadioGroupPrimitive from "../modules/esm.sh/_@radix-ui/react-radio-group@1.1.3.js"
-import * as AltRadioGroupPrimitive from "../modules/lib/components/radio-group.d.ts"
+import * as RadioGroupTypes from "../modules/lib/components/radio-group.d.ts"
+
 import IconCircleFilled from "https://deno.land/x/tabler_icons_tsx@0.0.7/tsx/circle-filled.tsx"
 
 import { cn } from "../modules/lib/utils.ts"
@@ -9,8 +11,8 @@ import { ElementRef, ComponentPropsWithoutRef } from "../modules/lib/type-utils.
 
 
 const RadioGroup = React.forwardRef<
-  ElementRef<typeof AltRadioGroupPrimitive.Root>,
-  ComponentPropsWithoutRef<typeof AltRadioGroupPrimitive.Root>
+  ElementRef<typeof RadioGroupTypes.Root>,
+  ComponentPropsWithoutRef<typeof RadioGroupTypes.Root>
 >(({ class:className, ...props }, ref) => {
   return (
     <RadioGroupPrimitive.Root
@@ -24,8 +26,8 @@ RadioGroup.displayName = RadioGroupPrimitive.Root.displayName
 
 
 const RadioGroupItem = React.forwardRef<
-  ElementRef<typeof AltRadioGroupPrimitive.Item>,
-  ComponentPropsWithoutRef<typeof AltRadioGroupPrimitive.Item>
+  ElementRef<typeof RadioGroupTypes.Item>,
+  ComponentPropsWithoutRef<typeof RadioGroupTypes.Item>
 >(({ class:className, children, ...props }, ref) => {
   return (
     <RadioGroupPrimitive.Item
@@ -49,4 +51,7 @@ const RadioGroupItem = React.forwardRef<
 RadioGroupItem.displayName = RadioGroupPrimitive.Item.displayName
 
 
-export { RadioGroup, RadioGroupItem }
+export {
+  RadioGroup,
+  RadioGroupItem
+}
