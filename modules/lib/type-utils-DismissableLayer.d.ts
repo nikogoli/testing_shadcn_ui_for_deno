@@ -1,14 +1,12 @@
-import { PrimitiveForwardRefComponent, ComponentPropsWithoutRef } from "./type-utils.ts"
-
-/**
- * Following type-definitions are based on "https://esm.sh/v132/@radix-ui/react-dismissable-layer@1.0.5/X-YS9AdHlwZXMvcmVhY3Q6cHJlYWN0L2NvbXBhdCxyZWFjdDpwcmVhY3QvY29tcGF0CmUvKg/dist/index.d.ts"
-*/ 
+import { PrimitiveDivProps } from "./type-utils-Primitive.d.ts"
 
 
-type PrimitiveDivProps = ComponentPropsWithoutRef<PrimitiveForwardRefComponent<"div">>;
-type PointerDownOutsideEvent = CustomEvent<{ originalEvent: PointerEvent }>;
-type FocusOutsideEvent = CustomEvent<{ originalEvent: FocusEvent }>;
-export interface DismissableLayerProps extends PrimitiveDivProps {
+/* -------------------------------------------------------------------------------------------------
+ * Root
+ * -----------------------------------------------------------------------------------------------*/
+export const Root: React.ForwardRefExoticComponent<DismissableLayerProps & React.RefAttributes<HTMLDivElement>>;
+
+interface DismissableLayerProps extends PrimitiveDivProps {
   /**
    * When `true`, hover/focus/click interactions will be disabled on elements outside
    * the `DismissableLayer`. Users will need to click twice on outside elements to
@@ -42,7 +40,18 @@ export interface DismissableLayerProps extends PrimitiveDivProps {
   onDismiss?: () => void;
 }
 
+type PointerDownOutsideEvent = CustomEvent<{
+  originalEvent: PointerEvent;
+}>;
+type FocusOutsideEvent = CustomEvent<{
+  originalEvent: FocusEvent;
+}>;
 
-export const DismissableLayer: React.ForwardRefExoticComponent<
-  DismissableLayerProps & React.RefAttributes<HTMLDivElement>
->;
+
+/* -------------------------------------------------------------------------------------------------
+ * Branch
+ * -----------------------------------------------------------------------------------------------*/
+export const Branch: React.ForwardRefExoticComponent<DismissableLayerBranchProps & React.RefAttributes<HTMLDivElement>>;
+
+interface DismissableLayerBranchProps extends PrimitiveDivProps {
+}
