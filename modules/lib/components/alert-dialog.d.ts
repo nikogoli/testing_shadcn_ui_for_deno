@@ -3,90 +3,106 @@ import * as React from '../../esm.sh/preact@10.19.6/compat.js'
 import { ComponentPropsWithoutRef } from "../type-utils.ts"
 import * as AltDialogPrimitive from "../type-utils-DialogPrimitive.d.ts"
 
-/**
- * Following type-definitions are based on "https://esm.sh/v132/@radix-ui/react-alert-dialog@1.0.5/X-YS9AdHlwZXMvcmVhY3Q6cHJlYWN0L2NvbXBhdCxyZWFjdDpwcmVhY3QvY29tcGF0CmUvKg/dist/index.d.ts"
- */ 
 
+
+/* -------------------------------------------------------------------------------------------------
+ * Root
+ * -----------------------------------------------------------------------------------------------*/
+export const Root: React.FC<AlertDialogProps>;
 
 type DialogProps = ComponentPropsWithoutRef<typeof AltDialogPrimitive.Root>
 interface AlertDialogProps extends Omit<DialogProps, 'modal'> {
 }
 
-export const Root: React.FC<AlertDialogProps>;
 
-
-
+/* -------------------------------------------------------------------------------------------------
+ * Trigger
+ * -----------------------------------------------------------------------------------------------*/
+export const Trigger: React.ForwardRefExoticComponent<
+  AlertDialogTriggerProps & React.RefAttributes<HTMLButtonElement>
+>;
 
 type DialogTriggerProps = ComponentPropsWithoutRef<typeof AltDialogPrimitive.Trigger>;
 interface AlertDialogTriggerProps extends DialogTriggerProps {
 }
 
-export const Trigger: React.ForwardRefExoticComponent<
-  AlertDialogTriggerProps & React.RefAttributes<HTMLButtonElement>
->;
 
-
+/* -------------------------------------------------------------------------------------------------
+ * Portal
+ * -----------------------------------------------------------------------------------------------*/
+export const Portal: React.FC<AlertDialogPortalProps>;
 
 type DialogPortalProps = ComponentPropsWithoutRef<typeof AltDialogPrimitive.Portal>;
 interface AlertDialogPortalProps extends DialogPortalProps {
 }
 
-export const Portal: React.FC<AlertDialogPortalProps>;
 
-
+/* -------------------------------------------------------------------------------------------------
+ * Overlay
+ * -----------------------------------------------------------------------------------------------*/
+export const Overlay: React.ForwardRefExoticComponent<
+  AlertDialogOverlayProps & React.RefAttributes<HTMLDivElement>
+>;
 
 type DialogOverlayProps = ComponentPropsWithoutRef<typeof AltDialogPrimitive.Overlay>;
 interface AlertDialogOverlayProps extends DialogOverlayProps {
 }
 
-export const Overlay: React.ForwardRefExoticComponent<
-  AlertDialogOverlayProps & React.RefAttributes<HTMLDivElement>
+
+/* -------------------------------------------------------------------------------------------------
+ * Content
+ * -----------------------------------------------------------------------------------------------*/
+export const Content: React.ForwardRefExoticComponent<
+  AlertDialogContentProps & React.RefAttributes<HTMLDivElement>
 >;
-
-
 
 type DialogContentProps = ComponentPropsWithoutRef<typeof AltDialogPrimitive.Content>;
 interface AlertDialogContentProps extends Omit<DialogContentProps, 'onPointerDownOutside' | 'onInteractOutside'> {
 }
 
-export const Content: React.ForwardRefExoticComponent<
-  AlertDialogContentProps & React.RefAttributes<HTMLDivElement>
+
+/* -------------------------------------------------------------------------------------------------
+ * Action
+ * -----------------------------------------------------------------------------------------------*/
+export const Action: React.ForwardRefExoticComponent<
+  AlertDialogActionProps & React.RefAttributes<HTMLButtonElement>
 >;
-
-
 
 type DialogCloseProps = ComponentPropsWithoutRef<typeof AltDialogPrimitive.Close>;
 interface AlertDialogActionProps extends DialogCloseProps {
 }
 
-export const Action: React.ForwardRefExoticComponent<
-  AlertDialogActionProps & React.RefAttributes<HTMLButtonElement>
->;
 
-
-
-interface AlertDialogCancelProps extends DialogCloseProps {
-}
+/* -------------------------------------------------------------------------------------------------
+ * Cancel
+ * -----------------------------------------------------------------------------------------------*/
 export const Cancel: React.ForwardRefExoticComponent<
   AlertDialogCancelProps & React.RefAttributes<HTMLButtonElement>
 >;
 
+interface AlertDialogCancelProps extends DialogCloseProps {
+}
 
+
+/* -------------------------------------------------------------------------------------------------
+ * Title
+ * -----------------------------------------------------------------------------------------------*/
+export const Title: React.ForwardRefExoticComponent<
+  AlertDialogTitleProps & React.RefAttributes<HTMLHeadingElement>
+>;
 
 type DialogTitleProps = ComponentPropsWithoutRef<typeof AltDialogPrimitive.Title>;
 interface AlertDialogTitleProps extends DialogTitleProps {
 }
 
-export const Title: React.ForwardRefExoticComponent<
-  AlertDialogTitleProps & React.RefAttributes<HTMLHeadingElement>
+
+/* -------------------------------------------------------------------------------------------------
+ * Description
+ * -----------------------------------------------------------------------------------------------*/
+export const Description: React.ForwardRefExoticComponent<
+  AlertDialogDescriptionProps & React.RefAttributes<HTMLParagraphElement>
 >;
-
-
 
 type DialogDescriptionProps = ComponentPropsWithoutRef<typeof AltDialogPrimitive.Description>;
 interface AlertDialogDescriptionProps extends DialogDescriptionProps {
 }
-
-export const Description: React.ForwardRefExoticComponent<
-  AlertDialogDescriptionProps & React.RefAttributes<HTMLParagraphElement>
->;
