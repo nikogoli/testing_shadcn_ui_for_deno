@@ -20,15 +20,22 @@ const Variants = {
   },
 }
 
+
 const classnamesByVariants = cva(
   'inline-flex items-center border rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
   { ...Variants }
 )
 
-export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof classnamesByVariants> {}
+
+interface BadgeProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof classnamesByVariants> {}
+
 
 function Badge({ class:className, variant, ...props }: BadgeProps) {
-  return <div className={cn(classnamesByVariants({ variant }), className)} {...props} />
+  return <div class={cn(classnamesByVariants({ variant }), className)} {...props} />
 }
 
-export { Badge, Variants as badgeVariants }
+
+export {
+  Badge,
+  Variants as badgeVariants
+}
