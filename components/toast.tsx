@@ -1,4 +1,5 @@
-import { useState, useEffect } from "preact/hooks";
+// @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
+import * as React from '../modules/esm.sh/preact@10.19.6/compat.js'
 import {
     Toast, ToastClose, ToastDescription, ToastProvider,
     ToastTitle, ToastViewport, ToastAction,
@@ -6,7 +7,6 @@ import {
 } from './toastElems.tsx'
 
 import { ComponentPropsWithoutRef } from "../modules/lib/type-utils.ts";
-import { VNode } from "preact";
 
 
 export {
@@ -20,13 +20,12 @@ export {
 
 type ToastProps = ComponentPropsWithoutRef<typeof Toast>
 
-// I'm not sure this is valid change. The original is "React.ReactElement<typeof ToastAction>". (nikogoli)
-type ToastActionElement = VNode<typeof ToastAction>
+type ToastActionElement = React.ReactElement<typeof ToastAction>
 
 type ToasterToast = ToastProps & {
   id: string
-  title?: VNode | string
-  description?: VNode | string
+  title?: React.ReactNode
+  description?: React.ReactNode
   action?: ToastActionElement
 }
 
@@ -61,9 +60,9 @@ function Toaster(props:ToastProps) {
 
 
 function useToast() {
-  const [state, setState] = useState<State>(memoryState)
+  const [state, setState] = React.useState<State>(memoryState)
 
-  useEffect(() => {
+  React.useEffect(() => {
     listeners.push(setState)
     return () => {
       const index = listeners.indexOf(setState)

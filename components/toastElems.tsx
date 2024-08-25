@@ -1,7 +1,10 @@
-import * as React from "preact/compat"
+// @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
+import * as React from '../modules/esm.sh/preact@10.19.6/compat.js'
+// @deno-types="../modules/lib/components/toast.d.ts"
 import * as ToastPrimitives from "../modules/esm.sh/_@radix-ui/react-toast@1.1.5.js"
-import * as AltToastPrimitives from "../modules/lib/components/toast.d.ts"
+import * as ToastTypes from "../modules/lib/components/toast.d.ts"
 import { VariantProps, cva } from "../modules/esm.sh/class-variance-authority@0.7.0.js"
+
 import IconX from "https://deno.land/x/tabler_icons_tsx@0.0.7/tsx/x.tsx"
 
 import { cn } from "../modules/lib/utils.ts"
@@ -27,9 +30,9 @@ const classnamesByVariants = cva(
   space-x-4 overflow-hidden rounded-md border p-6 pr-8 shadow-lg transition-all
   data-[swipe=move]:transition-none data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)]
   data-[swipe=cancel]:translate-x-0 data-[swipe=end]:translate-x-[var(--radix-toast-swipe-end-x)]
-  data-[state=open]:sm:animate-slidein-frombottomfull
-  data-[state=open]:animate-slidein-fromtopfull
-  data-[state=closed]:animate-slideout-torightfull
+  data-[state=open]:sm:animate-slidein-from-bottom-full
+  data-[state=open]:animate-slidein-from-top-full
+  data-[state=closed]:animate-slideout-to-right-full
   data-[swipe=end]:animate-out`,
   { ... Variants}
 )
@@ -39,8 +42,8 @@ const ToastProvider = ToastPrimitives.Provider
 
 
 const ToastViewport = React.forwardRef<
-  ElementRef<typeof AltToastPrimitives.Viewport>,
-  ComponentPropsWithoutRef<typeof AltToastPrimitives.Viewport>
+  ElementRef<typeof ToastTypes.Viewport>,
+  ComponentPropsWithoutRef<typeof ToastTypes.Viewport>
 >(({ class:className, ...props }, ref) => (
   <ToastPrimitives.Viewport
     ref={ref}
@@ -56,8 +59,8 @@ ToastViewport.displayName = ToastPrimitives.Viewport.displayName
 
 
 const Toast = React.forwardRef<
-  ElementRef<typeof AltToastPrimitives.Root>,
-  ComponentPropsWithoutRef<typeof AltToastPrimitives.Root> &
+  ElementRef<typeof ToastTypes.Root>,
+  ComponentPropsWithoutRef<typeof ToastTypes.Root> &
     VariantProps<typeof classnamesByVariants>
 >(({ class:className, variant, ...props }, ref) => {
   return (
@@ -72,8 +75,8 @@ Toast.displayName = ToastPrimitives.Root.displayName
 
 
 const ToastAction = React.forwardRef<
-  ElementRef<typeof AltToastPrimitives.Action>,
-  ComponentPropsWithoutRef<typeof AltToastPrimitives.Action>
+  ElementRef<typeof ToastTypes.Action>,
+  ComponentPropsWithoutRef<typeof ToastTypes.Action>
 >(({ class:className, ...props }, ref) => (
   <ToastPrimitives.Action
     ref={ref}
@@ -94,13 +97,14 @@ ToastAction.displayName = ToastPrimitives.Action.displayName
 
 
 const ToastClose = React.forwardRef<
-  ElementRef<typeof AltToastPrimitives.Close>,
-  ComponentPropsWithoutRef<typeof AltToastPrimitives.Close>
+  ElementRef<typeof ToastTypes.Close>,
+  ComponentPropsWithoutRef<typeof ToastTypes.Close>
 >(({ class:className, ...props }, ref) => (
   <ToastPrimitives.Close
     ref={ref}
     className={cn(
-      `absolute right-2 top-2 rounded-md p-1 text-foreground/50 opacity-0 transition-opacity hover:text-foreground
+      `absolute right-2 top-2 rounded-md p-1 text-foreground/50 opacity-0
+       transition-opacity hover:text-foreground
        focus:opacity-100 focus:outline-none focus:ring-2 group-hover:opacity-100
        group-[.destructive]:text-red-300 group-[.destructive]:hover:text-red-50
        group-[.destructive]:focus:ring-red-400 group-[.destructive]:focus:ring-offset-red-600`,
@@ -116,8 +120,8 @@ ToastClose.displayName = ToastPrimitives.Close.displayName
 
 
 const ToastTitle = React.forwardRef<
-  ElementRef<typeof AltToastPrimitives.Title>,
-  ComponentPropsWithoutRef<typeof AltToastPrimitives.Title>
+  ElementRef<typeof ToastTypes.Title>,
+  ComponentPropsWithoutRef<typeof ToastTypes.Title>
 >(({ class:className, ...props }, ref) => (
   <ToastPrimitives.Title
     ref={ref}
@@ -129,8 +133,8 @@ ToastTitle.displayName = ToastPrimitives.Title.displayName
 
 
 const ToastDescription = React.forwardRef<
-  ElementRef<typeof AltToastPrimitives.Description>,
-  ComponentPropsWithoutRef<typeof AltToastPrimitives.Description>
+  ElementRef<typeof ToastTypes.Description>,
+  ComponentPropsWithoutRef<typeof ToastTypes.Description>
 >(({ class:className, ...props }, ref) => (
   <ToastPrimitives.Description
     ref={ref}
