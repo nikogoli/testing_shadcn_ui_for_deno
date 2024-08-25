@@ -1,11 +1,12 @@
 // @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
 import * as React from '../modules/esm.sh/preact@10.19.6/compat.js'
+// @deno-types="../modules/lib/components/dialog.d.ts"
 import * as SheetPrimitive from '../modules/esm.sh/v132/_@radix-ui/react-dialog@1.0.5.js'
-import * as AltSheetPrimitive from "../modules/lib/components/dialog.d.ts"
+import * as SheetTypes from "../modules/lib/components/dialog.d.ts"
+
 import IconX from "https://deno.land/x/tabler_icons_tsx@0.0.7/tsx/x.tsx"
 
 import { VariantProps, cva } from '../modules/esm.sh/class-variance-authority@0.7.0.js'
-
 import { cn } from '../modules/lib/utils.ts'
 import { ElementRef, ComponentPropsWithoutRef } from "../modules/lib/type-utils.ts"
 
@@ -14,17 +15,17 @@ const Variants = {
   variants: {
     side: {
       top: `inset-x-0 top-0 border-b
-        data-[state=open]:animate-slidein-fromtopfull
-        data-[state=closed]:animate-slideout-totopfull`,
+        data-[state=open]:animate-slidein-from-top-full
+        data-[state=closed]:animate-slideout-to-top-full`,
       bottom: `inset-x-0 bottom-0 border-t
-        data-[state=open]:animate-slidein-frombottomfull
-        data-[state=closed]:animate-slideout-tobottomfull`,
+        data-[state=open]:animate-slidein-from-bottom-full
+        data-[state=closed]:animate-slideout-to-bottom-full`,
       left: `inset-y-0 left-0 h-full w-3/4 border-r sm:max-w-sm
-        data-[state=open]:animate-slidein-fromleftfull
-        data-[state=closed]:animate-slideout-toleftfull`,
+        data-[state=open]:animate-slidein-from-left-full
+        data-[state=closed]:animate-slideout-to-left-full`,
       right: `inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm
-        data-[state=open]:animate-slidein-fromrightfull
-        data-[state=closed]:animate-slideout-torightfull`,
+        data-[state=open]:animate-slidein-from-right-full
+        data-[state=closed]:animate-slideout-to-right-full`,
     },
   },
   defaultVariants: {
@@ -52,8 +53,8 @@ const SheetPortal = SheetPrimitive.Portal
 
 
 const SheetOverlay = React.forwardRef<
-  ElementRef<typeof AltSheetPrimitive.Overlay>,
-  ComponentPropsWithoutRef<typeof AltSheetPrimitive.Overlay>
+  ElementRef<typeof SheetTypes.Overlay>,
+  ComponentPropsWithoutRef<typeof SheetTypes.Overlay>
 >(({ class:className, children, ...props }, ref) => (
   <SheetPrimitive.Overlay
     className={cn(
@@ -69,12 +70,12 @@ SheetOverlay.displayName = SheetPrimitive.Overlay.displayName
 
 
 interface DialogContentProps
-  extends Omit<ComponentPropsWithoutRef<typeof AltSheetPrimitive.Content>, "size">,
+  extends Omit<ComponentPropsWithoutRef<typeof SheetTypes.Content>, "size">,
     VariantProps<typeof classnamesByVariants> {}
 
 
 const SheetContent = React.forwardRef<
-  ElementRef<typeof AltSheetPrimitive.Content>,
+  ElementRef<typeof SheetTypes.Content>,
   DialogContentProps
 >(
   ({ side="right", class:className, children, ...props }, ref) => (
@@ -116,8 +117,8 @@ SheetFooter.displayName = 'SheetFooter'
 
 
 const SheetTitle = React.forwardRef<
-  ElementRef<typeof AltSheetPrimitive.Title>,
-  ComponentPropsWithoutRef<typeof AltSheetPrimitive.Title>
+  ElementRef<typeof SheetTypes.Title>,
+  ComponentPropsWithoutRef<typeof SheetTypes.Title>
 >(({ class:className, ...props }, ref) => (
   <SheetPrimitive.Title
     ref={ref}
@@ -128,8 +129,8 @@ SheetTitle.displayName = SheetPrimitive.Title.displayName
 
 
 const SheetDescription = React.forwardRef<
-  ElementRef<typeof AltSheetPrimitive.Description>,
-  ComponentPropsWithoutRef<typeof AltSheetPrimitive.Description>
+  ElementRef<typeof SheetTypes.Description>,
+  ComponentPropsWithoutRef<typeof SheetTypes.Description>
 >(({ class:className, ...props }, ref) => (
   <SheetPrimitive.Description
     ref={ref}
