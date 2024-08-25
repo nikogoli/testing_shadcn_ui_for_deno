@@ -1,7 +1,8 @@
 // @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
 import * as React from '../modules/esm.sh/preact@10.19.6/compat.js'
+// @deno-types="../modules/lib/components/tabs.d.ts"
 import * as TabsPrimitive from '../modules/esm.sh/_@radix-ui/react-tabs@1.0.4.js'
-import * as AltTabsPrimitive from "../modules/lib/components/tabs.d.ts"
+import * as TabsTypes from "../modules/lib/components/tabs.d.ts"
 
 import { cn } from '../modules/lib/utils.ts'
 import { ElementRef, ComponentPropsWithoutRef } from "../modules/lib/type-utils.ts"
@@ -11,8 +12,8 @@ const Tabs = TabsPrimitive.Root
 
 
 const TabsList = React.forwardRef<
-  ElementRef<typeof AltTabsPrimitive.List>,
-  ComponentPropsWithoutRef<typeof AltTabsPrimitive.List>
+  ElementRef<typeof TabsTypes.List>,
+  ComponentPropsWithoutRef<typeof TabsTypes.List>
 >(({ class:className, ...props }, ref) => (
   <TabsPrimitive.List
     ref={ref}
@@ -27,8 +28,8 @@ TabsList.displayName = TabsPrimitive.List.displayName
 
 
 const TabsTrigger = React.forwardRef<
-  ElementRef<typeof AltTabsPrimitive.Trigger>,
-  ComponentPropsWithoutRef<typeof AltTabsPrimitive.Trigger>
+  ElementRef<typeof TabsTypes.Trigger>,
+  ComponentPropsWithoutRef<typeof TabsTypes.Trigger>
 >(({ class:className, ...props }, ref) => (
   <TabsPrimitive.Trigger
     ref={ref}
@@ -47,8 +48,8 @@ TabsTrigger.displayName = TabsPrimitive.Trigger.displayName
 
 
 const TabsContent = React.forwardRef<
-  ElementRef<typeof AltTabsPrimitive.Content>,
-  ComponentPropsWithoutRef<typeof AltTabsPrimitive.Content>
+  ElementRef<typeof TabsTypes.Content>,
+  ComponentPropsWithoutRef<typeof TabsTypes.Content>
 >(({ class:className, ...props }, ref) => (
   <TabsPrimitive.Content
     ref={ref}
@@ -63,4 +64,9 @@ const TabsContent = React.forwardRef<
 TabsContent.displayName = TabsPrimitive.Content.displayName
 
 
-export { Tabs, TabsList, TabsTrigger, TabsContent }
+export {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent
+}
