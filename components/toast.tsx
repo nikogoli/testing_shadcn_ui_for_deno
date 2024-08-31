@@ -22,7 +22,7 @@ type ToastProps = ComponentPropsWithoutRef<typeof Toast>
 
 type ToastActionElement = React.ReactElement<typeof ToastAction>
 
-type ToasterToast = ToastProps & {
+type ToasterToast = Omit<ToastProps, "action"> & {
   id: string
   title?: React.ReactNode
   description?: React.ReactNode
