@@ -4,9 +4,8 @@ import * as React from '../modules/esm.sh/preact@10.19.6/compat.js'
 import * as AlertDialogPrimitive from '../modules/esm.sh/v132/_@radix-ui/react-alert-dialog@1.0.5.js'
 import * as AlertDialogTypes from "../modules/lib/components/alert-dialog.d.ts"
 
-import { cva } from "../modules/esm.sh/class-variance-authority@0.7.0.js"
 import { cn } from '../modules/lib/utils.ts'
-import { buttonVariants } from './button.tsx'
+import { classnamesOfButtonByVariants } from './button.tsx'
 
 import { ElementRef, ComponentPropsWithoutRef } from "../modules/lib/type-utils.ts"
 
@@ -98,21 +97,13 @@ const AlertDialogDescription = React.forwardRef<
 AlertDialogDescription.displayName = AlertDialogPrimitive.Description.displayName
 
 
-/* same as ./button.tsx */
-const classnamesByVariantsForButton = cva(
-  `inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium
-    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background transition-colors disabled:pointer-events-none disabled:opacity-50`,
-  { ...buttonVariants}
-)
-
-
 const AlertDialogAction = React.forwardRef<
   ElementRef<typeof AlertDialogTypes.Action>,
   ComponentPropsWithoutRef<typeof AlertDialogTypes.Action>
 >(({ class:className, ...props }, ref) => (
   <AlertDialogPrimitive.Action
     ref={ref}
-    className={cn(classnamesByVariantsForButton(), className)}
+    className={cn(classnamesOfButtonByVariants(), className)}
     {...props} />
 ))
 AlertDialogAction.displayName = AlertDialogPrimitive.Action.displayName
@@ -124,7 +115,7 @@ const AlertDialogCancel = React.forwardRef<
 >(({ class:className, ...props }, ref) => (
   <AlertDialogPrimitive.Cancel
     ref={ref}
-    className={cn(classnamesByVariantsForButton({ variant: 'outline' }), 'mt-2 sm:mt-0', className)}
+    className={cn(classnamesOfButtonByVariants({ variant: 'outline' }), 'mt-2 sm:mt-0', className)}
     {...props}
   />
 ))
