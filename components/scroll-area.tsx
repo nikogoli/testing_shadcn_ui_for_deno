@@ -1,6 +1,8 @@
 // @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
 import * as React from '../modules/esm.sh/preact@10.19.6/compat.js'
-import * as ScrollAreaPrimitive from "https://esm.sh/*@radix-ui/react-scroll-area@1.1.0?alias=react:preact/compat"
+// @deno-types="../modules/lib/components/scroll-area.d.ts"
+import * as ScrollAreaPrimitive from "../modules/esm.sh/_@radix-ui/react-scroll-area@1.1.0.proxied.js"
+import * as ScrollAreaTypes from "../modules/lib/components/scroll-area.d.ts"
 
 import { cn } from "../modules/lib/utils.ts"
 import {
@@ -10,9 +12,9 @@ import {
 
 
 const ScrollArea = React.forwardRef<
-  ElementRef<typeof ScrollAreaPrimitive.Root>,
-  ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root>
->(({ className, children, ...props }, ref) => (
+  ElementRef<typeof ScrollAreaTypes.Root>,
+  ComponentPropsWithoutRef<typeof ScrollAreaTypes.Root>
+>(({ class:className, children, ...props }, ref) => (
   <ScrollAreaPrimitive.Root
     ref={ref}
     className={cn("relative overflow-hidden", className)}
@@ -27,11 +29,12 @@ const ScrollArea = React.forwardRef<
 ))
 ScrollArea.displayName = ScrollAreaPrimitive.Root.displayName
 
+
 const ScrollBar = React.forwardRef<
-  ElementRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>,
-  ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>
->(({ className, orientation = "vertical", ...props }, ref) => (
-  <ScrollAreaPrimitive.ScrollAreaScrollbar
+  ElementRef<typeof ScrollAreaTypes.Scrollbar>,
+  ComponentPropsWithoutRef<typeof ScrollAreaTypes.Scrollbar>
+>(({ class:className, orientation = "vertical", ...props }, ref) => (
+  <ScrollAreaPrimitive.Scrollbar
     ref={ref}
     orientation={orientation}
     className={cn(
@@ -44,9 +47,13 @@ const ScrollBar = React.forwardRef<
     )}
     {...props}
   >
-    <ScrollAreaPrimitive.ScrollAreaThumb className="relative flex-1 rounded-full bg-border" />
-  </ScrollAreaPrimitive.ScrollAreaScrollbar>
+    <ScrollAreaPrimitive.Thumb className="relative flex-1 rounded-full bg-border" />
+  </ScrollAreaPrimitive.Scrollbar>
 ))
-ScrollBar.displayName = ScrollAreaPrimitive.ScrollAreaScrollbar.displayName
+ScrollBar.displayName = ScrollAreaPrimitive.Scrollbar.displayName
 
-export { ScrollArea, ScrollBar }
+
+export {
+  ScrollArea,
+  ScrollBar
+}
