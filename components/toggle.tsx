@@ -53,5 +53,6 @@ Toggle.displayName = TogglePrimitive.Root.displayName
 
 export {
   Toggle,
-  Variants as toggleVariants
+  Variants as toggleVariants,
+  classnamesByVariants as classnamesOfToggleByVariants
 }
