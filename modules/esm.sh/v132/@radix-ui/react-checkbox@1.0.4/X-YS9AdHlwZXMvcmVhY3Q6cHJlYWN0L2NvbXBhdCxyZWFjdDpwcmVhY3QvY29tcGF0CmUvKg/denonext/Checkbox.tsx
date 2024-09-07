@@ -1,14 +1,16 @@
-import * as React from 'react';
-import { useComposedRefs } from '@radix-ui/react-compose-refs';
-import { createContextScope } from '@radix-ui/react-context';
-import { composeEventHandlers } from '@radix-ui/primitive';
-import { useControllableState } from '@radix-ui/react-use-controllable-state';
-import { usePrevious } from '@radix-ui/react-use-previous';
-import { useSize } from '@radix-ui/react-use-size';
-import { Presence } from '@radix-ui/react-presence';
-import { Primitive } from '@radix-ui/react-primitive';
+// @deno-types="https://esm.sh/v128/preact@10.19.6/compat/src/index.d.ts"
+import * as React from '../../../../../../esm.sh/preact@10.19.6/compat.js';
+import { useComposedRefs } from '../../../../../../esm.sh/v132/_@radix-ui/react-compose-refs@1.0.1.js';
+import { createContextScope } from '../../../../../../esm.sh/v132/_@radix-ui/react-context@1.0.1.js';
+import { composeEventHandlers } from '../../../../../../esm.sh/_@radix-ui/primitive@1.0.1.js';
+import { useControllableState } from '../../../../../../esm.sh/v132/_@radix-ui/react-use-controllable-state@1.0.1.js';
+import { usePrevious } from '../../../../../../esm.sh/v132/_@radix-ui/react-use-previous@1.0.1.js';
+import { useSize } from '../../../../../../esm.sh/v132/_@radix-ui/react-use-size@1.0.1.js';
+import { Presence } from '../../../../../../esm.sh/v132/_@radix-ui/react-presence@1.0.1.js';
+import { Primitive } from '../../../../../../esm.sh/v132/_@radix-ui/react-primitive@1.0.3.js';
 
-import type { Scope } from '@radix-ui/react-context';
+import type { Scope } from '../../../../../../esm.sh/v132/_@radix-ui/react-context@1.0.1.js';
+
 
 /* -------------------------------------------------------------------------------------------------
  * Checkbox
@@ -52,7 +54,9 @@ const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>(
       ...checkboxProps
     } = props;
     const [button, setButton] = React.useState<HTMLButtonElement | null>(null);
-    const composedRefs = useComposedRefs(forwardedRef, (node) => setButton(node));
+    /* below 'setButton()' sometime does not lead re-rendering that removes <BubbleInput>. (nikogoli) */
+    //const composedRefs = useComposedRefs(forwardedRef, (node) => setButton(node));
+    const buttnRef = React.useRef<HTMLButtonElement>(null)
     const hasConsumerStoppedPropagationRef = React.useRef(false);
     // We set this to true by default so that events bubble to forms without JS (SSR)
     const isFormControl = button ? Boolean(button.closest('form')) : true;
@@ -62,6 +66,14 @@ const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>(
       onChange: onCheckedChange,
     });
     const initialCheckedStateRef = React.useRef(checked);
+
+    /*Instead of composedRefs, use useEffect() with ref. (nikogoli) */
+    React.useEffect(() => {
+      if (buttnRef.current){
+        setButton(buttnRef.current)
+      }
+    }, [buttnRef.current])
+
     React.useEffect(() => {
       const form = button?.form;
       if (form) {
@@ -83,7 +95,7 @@ const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>(
           disabled={disabled}
           value={value}
           {...checkboxProps}
-          ref={composedRefs}
+          ref={buttnRef}
           onKeyDown={composeEventHandlers(props.onKeyDown, (event) => {
             // According to WAI ARIA, Checkboxes don't activate on enter keypress
             if (event.key === 'Enter') event.preventDefault();
