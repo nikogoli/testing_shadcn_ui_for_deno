@@ -322,8 +322,8 @@ Radix UI と Tailwind CSS を用いたコンポーネントライブラリ shadc
 
 3. コンポーネントを import して利用する
   ```
-  import { Label } from "https://deno.land/x/testing_shadcn_ui_for_deno@0.1.1/components/label.tsx"
-  import { Switch } from "https://deno.land/x/testing_shadcn_ui_for_deno@0.1.1/components/switch.tsx"
+  import { Label } from "https://deno.land/x/testing_shadcn_ui_for_deno@0.1.2/components/label.tsx"
+  import { Switch } from "https://deno.land/x/testing_shadcn_ui_for_deno@0.1.2/components/switch.tsx"
 
   export function SwitchDemo() {
     return (
@@ -338,7 +338,7 @@ Radix UI と Tailwind CSS を用いたコンポーネントライブラリ shadc
 <br>
 
 ## 各コンポーネントの対応状況 (v0.1.1)
-外部モジュールに強く依存する以下のコンポーネント以外のものは利用可能
+外部モジュールに強く依存する以下のコンポーネント**以外のもの**は利用可能
 - 🚫 Calendar
 - 🚫 Carousel
 - 🚫 Chart
